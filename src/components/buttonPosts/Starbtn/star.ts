@@ -1,4 +1,4 @@
-import styles from './buttonPosts.css'
+import styles from './star.css'
 export enum Attribute6 {
 	'image' = 'image',
 }
