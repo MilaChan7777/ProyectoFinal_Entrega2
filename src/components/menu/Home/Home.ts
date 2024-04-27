@@ -1,4 +1,4 @@
-import styles from './menu.css';
+import styles from './Home.css';
 export enum Attribute {
 	'image' = 'image',
 }
