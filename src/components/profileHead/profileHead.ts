@@ -3,11 +3,13 @@ import styles from './userPosts.css';
 export enum Attribute4 {
 	'profilepic' = 'profilepic',
 	'name' = 'name',
+	'followers' = 'followers'
 }
 
 class profileHead extends HTMLElement {
 	profilepic?: string;
 	name?: string;
+	followers?: string
 
 	constructor() {
 		super();
@@ -17,7 +19,8 @@ class profileHead extends HTMLElement {
 	static get observedAttributes() {
 		const attrs: Record<Attribute4, null> = {
 			profilepic: null,
-			name: null
+			name: null,
+			followers: null
 		};
 		return Object.keys(attrs);
 	}
@@ -37,6 +40,7 @@ class profileHead extends HTMLElement {
 	        <div class="user">
 	        <img src=${this.profilepic}></img>
             <p class="username">${this.name}</p>
+			<p>${this.followers} seguidores</p>
             `;
 		    }
 		const cssUserpost = this.ownerDocument.createElement('style');
