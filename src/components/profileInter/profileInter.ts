@@ -31,6 +31,7 @@ class Profileinter extends HTMLElement {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
             <p>${this.description}</p>
+            <button type="submit">Edit profile</button>
             `;
 		    }
 		const cssUserpost = this.ownerDocument.createElement('style');
