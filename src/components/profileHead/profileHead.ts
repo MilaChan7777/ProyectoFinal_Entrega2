@@ -17,7 +17,7 @@ class profileHead extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		const attrs: Record<Attribute4, null> = {
+		const attrs: Record<Attributeposthead, null> = {
 			profilepic: null,
 			name: null,
 			followers: null
@@ -25,7 +25,7 @@ class profileHead extends HTMLElement {
 		return Object.keys(attrs);
 	}
 
-	attributeChangedCallback(propName: Attribute4, oldValue: string | undefined, newValue: string | undefined) {
+	attributeChangedCallback(propName: Attributeposthead, oldValue: string | undefined, newValue: string | undefined) {
 		this[propName] = newValue;
 	}
 
