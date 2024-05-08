@@ -1,5 +1,6 @@
 
 import profileHead, { Attributeposthead } from '../../components/profileHead/profileHead';
+import Profileinter, { AttributeprofileInter } from '../../components/profileInter/profileInter';
 import styles from './Post.css';
 
 class Profile extends HTMLElement {
@@ -23,9 +24,9 @@ class Profile extends HTMLElement {
         profileHead.setAttribute(Attributeposthead.followers, '41')
 		section.appendChild(profileHead)
 
-		const inputPost = document.createElement('inputPost')
-		section.appendChild(inputPost)
-		
+        const profileInput = document.createElement('profileInter');
+        profileInput.setAttribute(AttributeprofileInter.description, 'Ilustrador colombiano de 19 años, apasionado por el arte fantástico y estudiante de diseño de medios interactivos.')
+
 		}
 		const cssUserpost = this.ownerDocument.createElement('style');
 		cssUserpost.innerHTML = styles;
