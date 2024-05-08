@@ -1,6 +1,6 @@
 import styles from './userPosts.css';
 
-export enum Attribute4 {
+export enum Attributeposthead {
 	'profilepic' = 'profilepic',
 	'name' = 'name',
 	'followers' = 'followers'
