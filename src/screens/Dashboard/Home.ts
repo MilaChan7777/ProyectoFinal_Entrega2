@@ -1,6 +1,6 @@
 import Home, { AttributeHome } from '../../components/menu/Home/Home';
-import Search from '../../components/menu/Search/Search';
-import Post from '../../components/menu/Post/Post';
+import Search, { AttributeSearch } from '../../components/menu/Search/Search';
+import Post, { AttributePost } from '../../components/menu/Post/Post';
 import Profile from '../../components/menu/Profile/Profile';
 
 import usersData from '../../components/userPosts/userPosts';
@@ -40,9 +40,9 @@ class AppContainer extends HTMLElement {
 		Menu.appendChild(Logo);
 
 		Home.setAttribute(AttributeHome.image, '../icons/Home.png');
-		Search.setAttribute(Attribute1.image, '../icons/Search.png');
-		Post.setAttribute(Attribute2.image, '../icons/Post.png');
-		Profile.setAttribute(Attribute3.image, '../icons/Profile.png');
+		Search.setAttribute(AttributePost.image, '../icons/Search.png');
+		Post.setAttribute(AttributePost.image, '../icons/Post.png');
+		Profile.setAttribute(AttributeSearch.image, '../icons/Profile.png');
 
 		Menu.appendChild(Home);
 		Menu.appendChild(Search);
