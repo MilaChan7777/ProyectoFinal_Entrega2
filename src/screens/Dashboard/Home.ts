@@ -1,7 +1,7 @@
 import Home, { AttributeHome } from '../../components/menu/Home/Home';
 import Search, { AttributeSearch } from '../../components/menu/Search/Search';
 import Post, { AttributePost } from '../../components/menu/Post/Post';
-import Profile from '../../components/menu/Profile/Profile';
+import Profile, { AttributeProfile } from '../../components/menu/Profile/Profile';
 
 import usersData, { AttributeUser } from '../../components/userPosts/userPosts';
 import { Save } from '../../components/indexPadre';
@@ -75,12 +75,12 @@ class Dashboard extends HTMLElement {
 			container.appendChild(post);
 		});
 
-		const Menu = document.createElement('section') as Home;
+		const Menu = document.createElement('section');
 		Menu.classList.add('menu-bar');
-		const Home = document.createElement('home-button') as Search;
-		const Search = document.createElement('search-button') as Post;
-		const Post = document.createElement('post-button') as Profile;
-		const Profile = document.createElement('profile-button');
+		const Home = document.createElement('home-button') as Home;
+		const Search = document.createElement('search-button') as Search;
+		const Post = document.createElement('post-button') as Post;
+		const Profile = document.createElement('profile-button') as Profile;
 
 		const Logo = document.createElement('img');
 		Logo.src = '../icons/VanguardLogo.jpeg';
@@ -89,9 +89,9 @@ class Dashboard extends HTMLElement {
 		Menu.appendChild(Logo);
 
 		Home.setAttribute(AttributeHome.image, '../icons/Home.png');
-		Search.setAttribute(AttributePost.image, '../icons/Search.png');
+		Search.setAttribute(AttributeSearch.image, '../icons/Search.png');
 		Post.setAttribute(AttributePost.image, '../icons/Post.png');
-		Profile.setAttribute(AttributeSearch.image, '../icons/Profile.png');
+		Profile.setAttribute(AttributeProfile.image, '../icons/Profile.png');
 
 		Menu.appendChild(Home);
 		Menu.appendChild(Search);
