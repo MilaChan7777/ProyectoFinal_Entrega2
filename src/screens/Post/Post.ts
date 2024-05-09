@@ -1,9 +1,12 @@
-import { AttributeinputPost } from '../../components/inputPost/inputPost';
+import Inputpost, { AttributeinputPost } from '../../components/inputPost/inputPost';
 import profileHead, { Attributeposthead } from '../../components/profileHead/profileHead';
 import styles from './Post.css';
 import { changeScreen } from '../../store/actions';
 import { addObserver } from '../../store/store';
 import { dispatch } from '../../store/store';
+import '../../components/inputPost/inputPost';
+import '../../components/postButton/postButton';
+
 class Post extends HTMLElement {
 
 	constructor() {
@@ -29,8 +32,12 @@ class Post extends HTMLElement {
 		profileHead.setAttribute(Attributeposthead.name, 'Santi.gumi')
 		section.appendChild(profileHead)
 
-		const inputPost = document.createElement('inputPost')
-		section.appendChild(inputPost)
+		const input = document.createElement('input-post')
+		section.appendChild(input)
+
+		const button = document.createElement('button-post')
+		section.appendChild(button)
+
 		this.shadowRoot.appendChild(section)
 		
 		}
