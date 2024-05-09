@@ -1,4 +1,4 @@
-import styles from './userPosts.css';
+import styles from './profileHead.css';
 
 export enum Attributeposthead {
 	'profilepic' = 'profilepic',
@@ -6,7 +6,7 @@ export enum Attributeposthead {
 	'followers' = 'followers'
 }
 
-class profileHead extends HTMLElement {
+class Profilehead extends HTMLElement {
 	profilepic?: string;
 	name?: string;
 	followers?: string
@@ -49,5 +49,5 @@ class profileHead extends HTMLElement {
 	}
 }
 
-export default profileHead;
-customElements.define('profileHead', profileHead);
+export default Profilehead;
+customElements.define('app-profilehead', Profilehead);
