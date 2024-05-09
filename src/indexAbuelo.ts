@@ -3,12 +3,14 @@
 // import { Post } from './components/indexPadre';
 // import { Profile } from './components/indexPadre';
 import { addObserver, appState } from './store/store';
-import './screens/Dashboard'
+import './screens/Dashboard/Home'
 import './screens/Post/Post'
 
 import usersData, { AttributeUser } from './components/userPosts/userPosts';
 import { data } from './services/data';
 import stylesApp from './index.css';
+import Post from './screens/Post/Post';
+import Dashboard from './screens/Dashboard/Home';
 
 class AppContainer extends HTMLElement {
 	constructor() {
@@ -27,12 +29,12 @@ class AppContainer extends HTMLElement {
 			}
 		switch (appState.screen) {
 			case 'POST':
-			const login = this.ownerDocument.createElement('app-post')
+			const login = this.ownerDocument.createElement('app-post') as Post
 			this.shadowRoot?.appendChild(login)
 				break;
 	
 			case 'DASHBOARD':
-			const dashboard = this.ownerDocument.createElement('app-Dashboard')
+			const dashboard = this.ownerDocument.createElement('app-dashboard') as Dashboard
 			this.shadowRoot?.appendChild(dashboard)
 				break;
 		
