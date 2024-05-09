@@ -1,7 +1,11 @@
 import styles from './post.css';
+import { dispatch, addObserver } from '../../../store/store';
+import { changeScreen } from '../../../store/actions';
+
 export enum AttributePost {
 	'image' = 'image',
 }
+
 
 class Post extends HTMLElement {
 	image?: string;
@@ -11,6 +15,7 @@ class Post extends HTMLElement {
 		super();
 		this.attachShadow({ mode: 'open' });
 		this.onButtonClicked = this.onButtonClicked.bind(this);
+		addObserver(this)
 	}
 
 	static get observedAttributes() {
@@ -52,18 +57,7 @@ class Post extends HTMLElement {
 	}
 
 	onButtonClicked() {
-		// const currentValue = this.getAttribute('image');
-		// this.setAttribute('image', '../icons/PostClicked.png');
-		// this.render();
-
-		const currentImage = this.shadowRoot?.querySelector('img')?.getAttribute('src');
-			if (this.index === 0) {
-			this.setAttribute('image', '../icons/PostClicked.png');
-			this.index ++
-			} else {
-			this.setAttribute('image', '../icons/Post.png');
-			this.index --	
-			}
+	dispatch(changeScreen('POST'))
 	}
 }
 
