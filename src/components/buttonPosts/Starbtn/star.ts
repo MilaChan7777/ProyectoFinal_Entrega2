@@ -1,5 +1,5 @@
 import styles from './star.css'
-export enum Attribute6 {
+export enum AttributeStar {
 	'image' = 'image',
 }
 
@@ -14,7 +14,7 @@ class Star extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		const attrs: Record<Attribute6, null> = {
+		const attrs: Record<AttributeStar, null> = {
 			image: null,
 		};
 		return Object.keys(attrs);
@@ -24,7 +24,7 @@ class Star extends HTMLElement {
 		this.mount();
 	}
 
-	attributeChangedCallback(propName: Attribute6, oldValue: string | undefined, newValue: string | undefined) {
+	attributeChangedCallback(propName: AttributeStar, oldValue: string | undefined, newValue: string | undefined) {
 		this[propName] = newValue;
 		this.mount();
 	}
