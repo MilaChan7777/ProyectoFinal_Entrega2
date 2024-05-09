@@ -14,7 +14,7 @@ import { dispatch, addObserver } from '../../store/store';
 import { changeScreen } from '../../store/actions';
 
 
-import stylesApp from './index.css';
+import stylesApp from './Home.css';
 import { AttributeComment } from '../../components/buttonPosts/Commentbtn/comment';
 import { AttributeSave } from '../../components/buttonPosts/Savebtn/save';
 import { AttributeStar } from '../../components/buttonPosts/Starbtn/star';
@@ -38,7 +38,8 @@ class Dashboard extends HTMLElement {
 
 	render() {
         this.Feed = [];
-
+        const container = this.ownerDocument.createElement('section');
+		container.setAttribute('id', 'container');
 		const userData = data;
         		userData.forEach((user) => {
 			const usersDataElement = document.createElement('my-usersdata') as usersData;
@@ -73,10 +74,6 @@ class Dashboard extends HTMLElement {
 
 			container.appendChild(post);
 		});
-
-
-		const container = this.ownerDocument.createElement('section');
-		container.setAttribute('id', 'container');
 
 		const Menu = document.createElement('section') as Home;
 		Menu.classList.add('menu-bar');
@@ -115,4 +112,4 @@ class Dashboard extends HTMLElement {
 	}
 }
 export default Dashboard
-customElements.define('app-Dashboard', Dashboard);
+customElements.define('app-dashboard',Dashboard)
