@@ -24,6 +24,8 @@ class AppContainer extends HTMLElement {
 	}
 
 	render() {
+		console.log(appState.screen);
+		
 		if (this.shadowRoot){
 			this.shadowRoot.innerHTML = ` `
 			}
