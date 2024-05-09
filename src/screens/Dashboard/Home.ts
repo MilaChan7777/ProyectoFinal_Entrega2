@@ -1,4 +1,4 @@
-import Home from '../../components/menu/Home/Home';
+import Home, { Attribute } from '../../components/menu/Home/Home';
 import Search from '../../components/menu/Search/Search';
 import Post from '../../components/menu/Post/Post';
 import Profile from '../../components/menu/Profile/Profile';
@@ -39,7 +39,7 @@ class AppContainer extends HTMLElement {
 		Logo.classList.add('logo');
 		Menu.appendChild(Logo);
 
-		Home.setAttribute(Attribute.image, '../icons/Home.png');
+		Home.setAttribute(AttributeHome.image, '../icons/Home.png');
 		Search.setAttribute(Attribute1.image, '../icons/Search.png');
 		Post.setAttribute(Attribute2.image, '../icons/Post.png');
 		Profile.setAttribute(Attribute3.image, '../icons/Profile.png');
