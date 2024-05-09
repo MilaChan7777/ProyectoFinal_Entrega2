@@ -10,7 +10,7 @@ import { Star } from '../../components/indexPadre';
 
 import stylesApp from './index.css';
 
-class AppContainer extends HTMLElement {
+class Dashboard extends HTMLElement {
 	Feed: HTMLElement[] = [];
 
 	constructor() {
@@ -21,7 +21,7 @@ class AppContainer extends HTMLElement {
 	connectedCallback() {
 		this.Feed = [];
 
-		const userData = data;
+		// const userData = data;
 
 		const container = this.ownerDocument.createElement('section');
 		container.setAttribute('id', 'container');
@@ -51,39 +51,39 @@ class AppContainer extends HTMLElement {
 
 		this.Feed.push(Menu);
 
-		userData.forEach((user) => {
-			const usersDataElement = document.createElement('my-usersdata') as usersData;
+		// userData.forEach((user) => {
+		// 	const usersDataElement = document.createElement('my-usersdata') as usersData;
 
-			const post = document.createElement('section');
-			post.classList.add('post');
+		// 	const post = document.createElement('section');
+		// 	post.classList.add('post');
 
-			usersDataElement.setAttribute(Attribute4.profilepic, user.profilepic);
-			usersDataElement.setAttribute(Attribute4.name, user.name);
+		// 	usersDataElement.setAttribute(Attribute4.profilepic, user.profilepic);
+		// 	usersDataElement.setAttribute(Attribute4.name, user.name);
 
-			usersDataElement.setAttribute(Attribute4.image, user.image);
-			usersDataElement.setAttribute(Attribute4.description, user.description);
-			usersDataElement.setAttribute(Attribute4.tag, user.tags.tag);
+		// 	usersDataElement.setAttribute(Attribute4.image, user.image);
+		// 	usersDataElement.setAttribute(Attribute4.description, user.description);
+		// 	usersDataElement.setAttribute(Attribute4.tag, user.tags.tag);
 
-			const saveButton = document.createElement('save-button') as Save;
-			saveButton.setAttribute(Attribute5.image, '../icons/Guardar.png');
+		// 	const saveButton = document.createElement('save-button') as Save;
+		// 	saveButton.setAttribute(Attribute5.image, '../icons/Guardar.png');
 
-			const starButton = document.createElement('start-button') as Star;
-			starButton.setAttribute(Attribute6.image, '../icons/Star.png');
+		// 	const starButton = document.createElement('start-button') as Star;
+		// 	starButton.setAttribute(Attribute6.image, '../icons/Star.png');
 
-			const commentButton = document.createElement('comment-button') as Comment;
-			commentButton.setAttribute(Attribute7.image, '../icons/Comentar.png');
+		// 	const commentButton = document.createElement('comment-button') as Comment;
+		// 	commentButton.setAttribute(Attribute7.image, '../icons/Comentar.png');
 
-			const buttonContainer = document.createElement('div');
-			buttonContainer.classList.add('interaction');
-			buttonContainer.appendChild(starButton);
-			buttonContainer.appendChild(commentButton);
-			buttonContainer.appendChild(saveButton);
+		// 	const buttonContainer = document.createElement('div');
+		// 	buttonContainer.classList.add('interaction');
+		// 	buttonContainer.appendChild(starButton);
+		// 	buttonContainer.appendChild(commentButton);
+		// 	buttonContainer.appendChild(saveButton);
 
-			post.appendChild(usersDataElement);
-			post.appendChild(buttonContainer);
+		// 	post.appendChild(usersDataElement);
+		// 	post.appendChild(buttonContainer);
 
-			container.appendChild(post);
-		});
+		// 	container.appendChild(post);
+		// });
 		this.Feed.push(container);
 		this.shadowRoot?.appendChild(container);
 		this.render();
@@ -99,5 +99,5 @@ class AppContainer extends HTMLElement {
 		this.shadowRoot?.appendChild(cssContainer);
 	}
 }
-
-customElements.define('app-container', AppContainer);
+export default Dashboard
+customElements.define('Dashboard', Dashboard);
