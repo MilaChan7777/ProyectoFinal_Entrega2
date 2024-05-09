@@ -1,5 +1,5 @@
 import styles from './post.css';
-export enum Attribute2 {
+export enum AttributePost {
 	'image' = 'image',
 }
 
@@ -14,7 +14,7 @@ class Post extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		const attrs: Record<Attribute2, null> = {
+		const attrs: Record<AttributePost, null> = {
 			image: null,
 		};
 		return Object.keys(attrs);
@@ -24,7 +24,7 @@ class Post extends HTMLElement {
 		this.mount();
 	}
 
-	attributeChangedCallback(propName: Attribute2, oldValue: string | undefined, newValue: string | undefined) {
+	attributeChangedCallback(propName: AttributePost, oldValue: string | undefined, newValue: string | undefined) {
 		this[propName] = newValue;
 		this.mount();
 	}
