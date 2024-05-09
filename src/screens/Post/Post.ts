@@ -33,4 +33,4 @@ class Post extends HTMLElement {
 }
 
 export default Post;
-customElements.define('my-post', Post);
+customElements.define('app-post', Post);
