@@ -1,6 +1,6 @@
 import { reducer } from "./reducers";
 export let appState = {
-screen: 'DASHBOARD',
+screen: 'POST',
 };
 
 let observers: any = [];
