@@ -1,5 +1,5 @@
 import styles from './search.css';
-export enum Attribute1 {
+export enum AttributeSearch {
 	'image' = 'image',
 }
 
@@ -14,7 +14,7 @@ class Search extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		const attrs: Record<Attribute1, null> = {
+		const attrs: Record<AttributeSearch, null> = {
 			image: null,
 		};
 		return Object.keys(attrs);
@@ -24,7 +24,7 @@ class Search extends HTMLElement {
 		this.mount();
 	}
 
-	attributeChangedCallback(propName: Attribute1, oldValue: string | undefined, newValue: string | undefined) {
+	attributeChangedCallback(propName: AttributeSearch, oldValue: string | undefined, newValue: string | undefined) {
 		this[propName] = newValue;
 		this.mount();
 	}

@@ -1,4 +1,4 @@
-import Home, { Attribute } from '../../components/menu/Home/Home';
+import Home, { AttributeHome } from '../../components/menu/Home/Home';
 import Search from '../../components/menu/Search/Search';
 import Post from '../../components/menu/Post/Post';
 import Profile from '../../components/menu/Profile/Profile';
