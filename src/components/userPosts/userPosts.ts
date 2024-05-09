@@ -1,6 +1,6 @@
 import styles from './userPosts.css';
 
-export enum Attribute4 {
+export enum AttributeUser {
 	'profilepic' = 'profilepic',
 	'name' = 'name',
 	'image' = 'image',
@@ -21,7 +21,7 @@ class usersData extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		const attrs: Record<Attribute4, null> = {
+		const attrs: Record<AttributeUser, null> = {
 			profilepic: null,
 			name: null,
 			image: null,
@@ -31,7 +31,7 @@ class usersData extends HTMLElement {
 		return Object.keys(attrs);
 	}
 
-	attributeChangedCallback(propName: Attribute4, oldValue: string | undefined, newValue: string | undefined) {
+	attributeChangedCallback(propName: AttributeUser, oldValue: string | undefined, newValue: string | undefined) {
 		this[propName] = newValue;
 	}
 
