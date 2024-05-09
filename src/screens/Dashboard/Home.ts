@@ -3,16 +3,21 @@ import Search, { AttributeSearch } from '../../components/menu/Search/Search';
 import Post, { AttributePost } from '../../components/menu/Post/Post';
 import Profile from '../../components/menu/Profile/Profile';
 
-import usersData from '../../components/userPosts/userPosts';
+import usersData, { AttributeUser } from '../../components/userPosts/userPosts';
 import { Save } from '../../components/indexPadre';
 import { Comment } from '../../components/indexPadre';
 import { Star } from '../../components/indexPadre';
+
+import { data } from '../../services/data';
 
 import { dispatch, addObserver } from '../../store/store';
 import { changeScreen } from '../../store/actions';
 
 
 import stylesApp from './index.css';
+import { AttributeComment } from '../../components/buttonPosts/Commentbtn/comment';
+import { AttributeSave } from '../../components/buttonPosts/Savebtn/save';
+import { AttributeStar } from '../../components/buttonPosts/Starbtn/star';
 
 class Dashboard extends HTMLElement {
 	Feed: HTMLElement[] = [];
@@ -24,42 +29,6 @@ class Dashboard extends HTMLElement {
 	}
 
 	connectedCallback() {
-
-
-		// userData.forEach((user) => {
-		// 	const usersDataElement = document.createElement('my-usersdata') as usersData;
-
-		// 	const post = document.createElement('section');
-		// 	post.classList.add('post');
-
-		// 	usersDataElement.setAttribute(Attribute4.profilepic, user.profilepic);
-		// 	usersDataElement.setAttribute(Attribute4.name, user.name);
-
-		// 	usersDataElement.setAttribute(Attribute4.image, user.image);
-		// 	usersDataElement.setAttribute(Attribute4.description, user.description);
-		// 	usersDataElement.setAttribute(Attribute4.tag, user.tags.tag);
-
-		// 	const saveButton = document.createElement('save-button') as Save;
-		// 	saveButton.setAttribute(Attribute5.image, '../icons/Guardar.png');
-
-		// 	const starButton = document.createElement('start-button') as Star;
-		// 	starButton.setAttribute(Attribute6.image, '../icons/Star.png');
-
-		// 	const commentButton = document.createElement('comment-button') as Comment;
-		// 	commentButton.setAttribute(Attribute7.image, '../icons/Comentar.png');
-
-		// 	const buttonContainer = document.createElement('div');
-		// 	buttonContainer.classList.add('interaction');
-		// 	buttonContainer.appendChild(starButton);
-		// 	buttonContainer.appendChild(commentButton);
-		// 	buttonContainer.appendChild(saveButton);
-
-		// 	post.appendChild(usersDataElement);
-		// 	post.appendChild(buttonContainer);
-
-		// 	container.appendChild(post);
-		// });
-
 		this.render();
         const Homebutton = this.shadowRoot?.querySelector('#homebutton');
 		Homebutton?.addEventListener('click', ()=>{
@@ -70,7 +39,41 @@ class Dashboard extends HTMLElement {
 	render() {
         this.Feed = [];
 
-		// const userData = data;
+		const userData = data;
+        		userData.forEach((user) => {
+			const usersDataElement = document.createElement('my-usersdata') as usersData;
+
+			const post = document.createElement('section');
+			post.classList.add('post');
+
+			usersDataElement.setAttribute(AttributeUser.profilepic, user.profilepic);
+			usersDataElement.setAttribute(AttributeUser.name, user.name);
+
+			usersDataElement.setAttribute(AttributeUser.image, user.image);
+			usersDataElement.setAttribute(AttributeUser.description, user.description);
+			usersDataElement.setAttribute(AttributeUser.tag, user.tags.tag);
+
+			const saveButton = document.createElement('save-button') as Save;
+			saveButton.setAttribute(AttributeSave.image, '../icons/Guardar.png');
+
+			const starButton = document.createElement('start-button') as Star;
+			starButton.setAttribute(AttributeStar.image, '../icons/Star.png');
+
+			const commentButton = document.createElement('comment-button') as Comment;
+			commentButton.setAttribute(AttributeComment.image, '../icons/Comentar.png');
+
+			const buttonContainer = document.createElement('div');
+			buttonContainer.classList.add('interaction');
+			buttonContainer.appendChild(starButton);
+			buttonContainer.appendChild(commentButton);
+			buttonContainer.appendChild(saveButton);
+
+			post.appendChild(usersDataElement);
+			post.appendChild(buttonContainer);
+
+			container.appendChild(post);
+		});
+
 
 		const container = this.ownerDocument.createElement('section');
 		container.setAttribute('id', 'container');
