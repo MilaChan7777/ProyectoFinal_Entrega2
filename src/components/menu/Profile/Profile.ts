@@ -1,5 +1,5 @@
 import styles from './profile.css';
-export enum Attribute3 {
+export enum AttributeProfile {
 	'image' = 'image',
 }
 
@@ -14,7 +14,7 @@ class Profile extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		const attrs: Record<Attribute3, null> = {
+		const attrs: Record<AttributeProfile, null> = {
 			image: null,
 		};
 		return Object.keys(attrs);
@@ -24,7 +24,7 @@ class Profile extends HTMLElement {
 		this.mount();
 	}
 
-	attributeChangedCallback(propName: Attribute3, oldValue: string | undefined, newValue: string | undefined) {
+	attributeChangedCallback(propName: AttributeProfile, oldValue: string | undefined, newValue: string | undefined) {
 		this[propName] = newValue;
 		this.mount();
 	}
