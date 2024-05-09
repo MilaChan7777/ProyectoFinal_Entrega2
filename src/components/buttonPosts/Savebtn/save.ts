@@ -1,5 +1,5 @@
 import styles from './save.css';
-export enum Attribute5 {
+export enum AttributeSave {
 	'image' = 'image',
 }
 
@@ -14,7 +14,7 @@ class Save extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		const attrs: Record<Attribute5, null> = {
+		const attrs: Record<AttributeSave, null> = {
 			image: null,
 		};
 		return Object.keys(attrs);
@@ -24,7 +24,7 @@ class Save extends HTMLElement {
 		this.mount();
 	}
 
-	attributeChangedCallback(propName: Attribute5, oldValue: string | undefined, newValue: string | undefined) {
+	attributeChangedCallback(propName: AttributeSave, oldValue: string | undefined, newValue: string | undefined) {
 		this[propName] = newValue;
 		this.mount();
 	}
