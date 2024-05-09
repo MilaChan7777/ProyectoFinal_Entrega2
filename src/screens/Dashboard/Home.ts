@@ -8,6 +8,10 @@ import { Save } from '../../components/indexPadre';
 import { Comment } from '../../components/indexPadre';
 import { Star } from '../../components/indexPadre';
 
+import { dispatch, addObserver } from '../../store/store';
+import { changeScreen } from '../../store/actions';
+
+
 import stylesApp from './index.css';
 
 class Dashboard extends HTMLElement {
@@ -16,40 +20,11 @@ class Dashboard extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
+        addObserver(this)
 	}
 
 	connectedCallback() {
-		this.Feed = [];
 
-		// const userData = data;
-
-		const container = this.ownerDocument.createElement('section');
-		container.setAttribute('id', 'container');
-
-		const Menu = document.createElement('section') as Home;
-		Menu.classList.add('menu-bar');
-		const Home = document.createElement('home-button') as Search;
-		const Search = document.createElement('search-button') as Post;
-		const Post = document.createElement('post-button') as Profile;
-		const Profile = document.createElement('profile-button');
-
-		const Logo = document.createElement('img');
-		Logo.src = '../icons/VanguardLogo.jpeg';
-		Logo.alt = 'Logo';
-		Logo.classList.add('logo');
-		Menu.appendChild(Logo);
-
-		Home.setAttribute(AttributeHome.image, '../icons/Home.png');
-		Search.setAttribute(AttributePost.image, '../icons/Search.png');
-		Post.setAttribute(AttributePost.image, '../icons/Post.png');
-		Profile.setAttribute(AttributeSearch.image, '../icons/Profile.png');
-
-		Menu.appendChild(Home);
-		Menu.appendChild(Search);
-		Menu.appendChild(Post);
-		Menu.appendChild(Profile);
-
-		this.Feed.push(Menu);
 
 		// userData.forEach((user) => {
 		// 	const usersDataElement = document.createElement('my-usersdata') as usersData;
@@ -84,12 +59,49 @@ class Dashboard extends HTMLElement {
 
 		// 	container.appendChild(post);
 		// });
-		this.Feed.push(container);
-		this.shadowRoot?.appendChild(container);
+
 		this.render();
+        const Homebutton = this.shadowRoot?.querySelector('#homebutton');
+		Homebutton?.addEventListener('click', ()=>{
+		dispatch(changeScreen('LOGIN'))
+		})
 	}
 
 	render() {
+        this.Feed = [];
+
+		// const userData = data;
+
+		const container = this.ownerDocument.createElement('section');
+		container.setAttribute('id', 'container');
+
+		const Menu = document.createElement('section') as Home;
+		Menu.classList.add('menu-bar');
+		const Home = document.createElement('home-button') as Search;
+		const Search = document.createElement('search-button') as Post;
+		const Post = document.createElement('post-button') as Profile;
+		const Profile = document.createElement('profile-button');
+
+		const Logo = document.createElement('img');
+		Logo.src = '../icons/VanguardLogo.jpeg';
+		Logo.alt = 'Logo';
+		Logo.classList.add('logo');
+		Menu.appendChild(Logo);
+
+		Home.setAttribute(AttributeHome.image, '../icons/Home.png');
+		Search.setAttribute(AttributePost.image, '../icons/Search.png');
+		Post.setAttribute(AttributePost.image, '../icons/Post.png');
+		Profile.setAttribute(AttributeSearch.image, '../icons/Profile.png');
+
+		Menu.appendChild(Home);
+		Menu.appendChild(Search);
+		Menu.appendChild(Post);
+		Menu.appendChild(Profile);
+
+		this.Feed.push(Menu);
+        this.Feed.push(container);
+		this.shadowRoot?.appendChild(container);
+
 		if (this.shadowRoot) {
 			this.Feed.forEach((element) => this.shadowRoot?.appendChild(element));
 		}
