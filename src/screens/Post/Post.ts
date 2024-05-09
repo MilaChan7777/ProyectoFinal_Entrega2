@@ -31,6 +31,7 @@ class Post extends HTMLElement {
 
 		const inputPost = document.createElement('inputPost')
 		section.appendChild(inputPost)
+		this.shadowRoot.appendChild(section)
 		
 		}
 		const cssUserpost = this.ownerDocument.createElement('style');
