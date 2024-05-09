@@ -1,4 +1,4 @@
-import styles from './userPosts.css';
+
 
 export enum AttributeinputPost {
 	'image' = 'image',
@@ -39,11 +39,11 @@ class Postbutton extends HTMLElement {
             </div>
             `;
 		    }
-		const cssUserpost = this.ownerDocument.createElement('style');
-		cssUserpost.innerHTML = styles;
-		this.shadowRoot?.appendChild(cssUserpost);
+		// const cssUserpost = this.ownerDocument.createElement('style');
+		// cssUserpost.innerHTML = styles;
+		// this.shadowRoot?.appendChild(cssUserpost);
 	}
 }
 
 export default Postbutton;
-customElements.define('postButton', Postbutton);
+customElements.define('button-post', Postbutton);
