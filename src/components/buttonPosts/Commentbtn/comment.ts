@@ -1,5 +1,5 @@
 import styles from './comment.css'
-export enum Attribute7 {
+export enum AttributeComment {
 	'image' = 'image',
 }
 
@@ -13,7 +13,7 @@ class Comment extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		const attrs: Record<Attribute7, null> = {
+		const attrs: Record<AttributeComment, null> = {
 			image: null,
 		};
 		return Object.keys(attrs);
@@ -23,7 +23,7 @@ class Comment extends HTMLElement {
 		this.render();
 	}
 
-	attributeChangedCallback(propName: Attribute7, oldValue: string | undefined, newValue: string | undefined) {
+	attributeChangedCallback(propName: AttributeComment, oldValue: string | undefined, newValue: string | undefined) {
 		this[propName] = newValue;
 		this.render();
 	}
