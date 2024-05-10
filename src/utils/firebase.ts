@@ -1,4 +1,8 @@
-import { initializeApp } from 'firebase/app';
+
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+import { getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyCJ3zQIujLQ1qj-nF0ADd8xP8oV4O2s4bA',
@@ -10,4 +14,17 @@ const firebaseConfig = {
 	measurementId: 'G-TYKJ3QSXKJ',
 };
 
+
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+export const getPosts = async () => {
+    const querySnapshot = await getDocs(collection(db, 'vanguardUsersPosts'));
+    const arrayPosts: Array<any>= [];
+
+    querySnapshot.forEach((doc) => {
+    const data = doc.data() as any;
+    arrayPosts.push({id: doc.id, ...data})
+    });
+    return arrayPosts
+}
