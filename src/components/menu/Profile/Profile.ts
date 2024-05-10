@@ -6,7 +6,7 @@ export enum AttributeProfile {
 	'image' = 'image',
 }
 
-class Profile extends HTMLElement {
+class Profilebtn extends HTMLElement {
 	image?: string;
 	public index: number= 0
 
@@ -60,5 +60,5 @@ class Profile extends HTMLElement {
 	}
 }
 
-export default Profile;
-customElements.define('profile-button', Profile);
+export default Profilebtn;
+customElements.define('profile-button', Profilebtn);
