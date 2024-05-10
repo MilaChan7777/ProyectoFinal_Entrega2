@@ -59,3 +59,11 @@ input-post {
     display: flex;
     flex-direction: column;
 }
+
+button-post {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 500px;
+    border-top: 1.5px solid #e6a0ff;
+}
