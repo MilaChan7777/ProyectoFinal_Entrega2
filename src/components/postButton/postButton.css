@@ -5,6 +5,20 @@ button {
     border: none;
     color: white;
     width: 150px;
-    font-size: x-large;
-    height: 50px;
+    font-size: 12pt;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+#Hashtags {
+    background-color: rgb(200, 85, 241);
+}
+
+hr {
+    border: none;
+    height: 60px;
+    background-color: #e6a0ff;
+    width: 1.5px;
+    margin: 0px;
 }
