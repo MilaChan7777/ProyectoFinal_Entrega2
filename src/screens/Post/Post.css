@@ -1,69 +1,82 @@
- 
- .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
- }
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	padding: 20px;
+}
 
- .post {
-    width: 90%; 
-    max-width: 500px; 
-    max-height: 700px;
-    margin-top: 60px;
-    margin-bottom: -40px;
- }
+.post {
+	width: 90%;
+	max-width: 500px;
+	max-height: 700px;
+	margin-top: 60px;
+	margin-bottom: -40px;
+}
 
- .menu-bar {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 90%; 
-    max-width: 500px; 
-    height: 60px;
-    background-color: white;
-    border-bottom: 1.5px solid #e6a0ff;
+.menu-bar {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 90%;
+	max-width: 500px;
+	height: 60px;
+	background-color: white;
+	border-bottom: 1.5px solid #e6a0ff;
+	padding: 0 20px;
 }
 
 .menu-bar button {
-    flex: 1; 
-    margin: 0 5px; 
+	flex: 1;
+	margin: 0 5px;
 }
 
-
 .logo {
-    position: fixed;
-    top: 20px;
-    left: -100px;
-    z-index: 1000;
-    width: 40px;
-    height: auto;
+	position: fixed;
+	top: 20px;
+	left: -100px;
+	z-index: 1000;
+	width: 40px;
+	height: auto;
 }
 
 app-profilehead {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    background-color: transparent;
-    padding-right: 10px;
-    padding-left: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+	background-color: transparent;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 input-post {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	max-width: 500px;
+	margin: 20px 0;
+}
+
+@media (max-width: 600px) {
+	input-post {
+		width: 100%; /* Ancho al 100% en dispositivos con ancho máximo de 600px */
+		max-width: none; /* Remover límite de ancho máximo */
+	}
 }
 
 button-post {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 500px;
-    border-top: 1.5px solid #e6a0ff;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 90%;
+	max-width: 500px;
+	margin: 20px 0;
+	border-top: 1.5px solid #e6a0ff;
+	padding: 10px;
 }
