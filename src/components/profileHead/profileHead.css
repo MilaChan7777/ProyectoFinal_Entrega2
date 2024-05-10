@@ -1,0 +1,12 @@
+.username {
+    display: flex;
+    padding-left: 10px;
+}
+
+.userimg {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 2px solid #e6a0ff;
+}
+
