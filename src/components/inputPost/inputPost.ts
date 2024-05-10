@@ -1,4 +1,4 @@
-
+import styles from "./inputPost.css"
 
 export enum AttributeinputPost {
 	'image' = 'image',
@@ -14,18 +14,6 @@ class Inputpost extends HTMLElement {
 		this.attachShadow({ mode: 'open' });
 	}
 
-	// static get observedAttributes() {
-	// 	const attrs: Record<AttributeinputPost, null> = {
-	// 		image: null,
-	// 		description: null,
-	// 	};
-	// 	return Object.keys(attrs);
-	// }
-
-	// attributeChangedCallback(propName: AttributeinputPost, oldValue: string | undefined, newValue: string | undefined) {
-	// 	this[propName] = newValue;
-	// }
-
 	connectedCallback() {
 		this.render();
 	}
@@ -33,13 +21,13 @@ class Inputpost extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-	        <input type="file" placeholder="añade una imagen">
-            <input type="text" placeholder="añade una descripción">
+	        <input class="Image" type="file" placeholder="añade una imagen">
+            <input class="Description" type="text" placeholder="Añade una descripción">
             `;
 		    }
-		// const cssUserpost = this.ownerDocument.createElement('style');
-		// cssUserpost.innerHTML = styles;
-		// this.shadowRoot?.appendChild(cssUserpost);
+			const cssInputpost = this.ownerDocument.createElement('style');
+			cssInputpost.innerHTML = styles;
+			this.shadowRoot?.appendChild(cssInputpost);
 	}
 }
 
