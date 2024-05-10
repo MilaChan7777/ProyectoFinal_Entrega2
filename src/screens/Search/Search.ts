@@ -1,3 +1,9 @@
+import Home, { AttributeHome } from '../../components/menu/Home/Home';
+import Search, { AttributeSearch } from '../../components/menu/Search/Search';
+import Post, { AttributePost } from '../../components/menu/Post/Post';
+import Profilebtn, { AttributeProfile } from '../../components/menu/Profile/Profile';
+import Searchbar from '../../components/searchinput/search';
+
 import styles from './Search.css';
 
 class searchScreen extends HTMLElement {
@@ -11,35 +17,42 @@ class searchScreen extends HTMLElement {
 	}
 
 	render() {
+		const Menu = document.createElement('section');
+		Menu.classList.add('menu-bar');
+		const Home = document.createElement('home-button') as Home;
+		const Search = document.createElement('search-button') as Search;
+		const Post = document.createElement('post-button') as Post;
+		const Profile = document.createElement('profile-button') as Profilebtn;
+
+		const Logo = document.createElement('img');
+		Logo.src = '../icons/VanguardLogo.jpeg';
+		Logo.alt = 'Logo';
+		Logo.classList.add('logo');
+		Menu.appendChild(Logo);
+
+		Home.setAttribute(AttributeHome.image, '../icons/Home.png');
+		Search.setAttribute(AttributeSearch.image, '../icons/Search.png');
+		Post.setAttribute(AttributePost.image, '../icons/Post.png');
+		Profile.setAttribute(AttributeProfile.image, '../icons/Profile.png');
+
+		Menu.appendChild(Home);
+		Menu.appendChild(Search);
+		Menu.appendChild(Post);
+		Menu.appendChild(Profile);
+		this.shadowRoot?.appendChild(Menu);
+
+		const container = document.createElement('section')
+		const post = document.createElement('section')
+		const searchbar = document.createElement('search-bar') as Searchbar;
+
+		post.appendChild(searchbar)
+		container.appendChild(post)
+		this.shadowRoot?.appendChild(container)
 		if (this.shadowRoot) {
-			const section = document.createElement('section');
-			const searchHead = document.createElement('profileHead');
-			searchHead.setAttribute('profilepic', 'https://i.pinimg.com/236x/ab/32/31/ab32318e982048561a4b1f0508b265bb.jpg');
-			searchHead.setAttribute('name', 'Santi.gumi');
-			searchHead.setAttribute('followers', '41');
-			section.appendChild(searchHead);
 
-			const searchInput = document.createElement('profileInter');
-			searchInput.setAttribute('description', 'Search for users or posts');
-
-			const searchInputElement = document.createElement('input');
-			searchInputElement.setAttribute('type', 'text');
-			searchInputElement.setAttribute('placeholder', 'Search...');
-			searchInputElement.setAttribute('id', 'searchInput');
-
-			const searchButton = document.createElement('button');
-			searchButton.setAttribute('id', 'searchButton');
-			searchButton.innerHTML = `<i class="material-icons">search</i>`;
-
-			searchInput.appendChild(searchInputElement);
-			searchInput.appendChild(searchButton);
-
-			this.shadowRoot?.appendChild(section);
-			this.shadowRoot?.appendChild(searchInput);
-
-			const cssUserpost = this.ownerDocument.createElement('style');
-			cssUserpost.innerHTML = styles;
-			this.shadowRoot?.appendChild(cssUserpost);
+			const cssSearch = this.ownerDocument.createElement('style');
+			cssSearch.innerHTML = styles;
+			this.shadowRoot?.appendChild(cssSearch);
 		}
 	}
 }
