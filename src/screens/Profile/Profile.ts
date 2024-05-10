@@ -28,7 +28,7 @@ class Profile extends HTMLElement {
 		const Home = document.createElement('home-button') as Home;
 		const Search = document.createElement('search-button') as Search;
 		const Post = document.createElement('post-button') as Post;
-		const Profile = document.createElement('profile-button') as Profilebtn;
+		const Profile = document.createElement('profile-button') as Profile;
 
 		const Logo = document.createElement('img');
 		Logo.src = '../icons/VanguardLogo.jpeg';

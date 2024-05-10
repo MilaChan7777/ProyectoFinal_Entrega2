@@ -6,7 +6,7 @@ export enum Attributeposthead2 {
 	'followers' = 'followers'
 }
 
-class Profilehead extends HTMLElement {
+class Profilehead2 extends HTMLElement {
 	profilepic?: string;
 	name?: string;
 	followers?: string
@@ -49,5 +49,5 @@ class Profilehead extends HTMLElement {
 	}
 }
 
-export default Profilehead;
-customElements.define('app-profilehead2', Profilehead);
+export default Profilehead2;
+customElements.define('app-profilehead2', Profilehead2);
