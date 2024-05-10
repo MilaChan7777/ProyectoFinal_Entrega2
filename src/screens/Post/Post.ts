@@ -57,7 +57,7 @@ class Postinput extends HTMLElement {
 		Menu.appendChild(Search);
 		Menu.appendChild(Post);
 		Menu.appendChild(Profile);
-		section.appendChild(Menu);
+		this.shadowRoot.appendChild(Menu);
 
 		const profileHead = document.createElement('app-profilehead');
 		profileHead.setAttribute(Attributeposthead.profilepic, 'https://i.pinimg.com/236x/ab/32/31/ab32318e982048561a4b1f0508b265bb.jpg')
