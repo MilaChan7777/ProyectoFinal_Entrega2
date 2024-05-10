@@ -1,0 +1,39 @@
+
+input[type="text"]{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 100px; 
+    border: none;
+}
+
+#description ::placeholder {
+    top: 10px; /* Desplaza el texto 10px hacia arriba */
+    left: 15px; /* Desplaza el texto 15px hacia la izquierda */
+    padding: 5px; /* Agrega 5px de espacio alrededor del texto */
+    margin: 2px; /* Agrega 2px de espacio entre el texto y el borde */
+    color: #999; /* Cambia el color del texto a gris claro */
+    font-style: italic;
+  }
+
+
+label[for="file-input"]  {
+    background-color: lightgray;
+    background-image: url('../../../icons/Imagen.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 95% 90%;
+    cursor: pointer;
+    width: 225;
+    height: 300px; 
+    border-radius: 10px;
+    margin: 10px;
+}  
+
+#description:focus{
+    outline: none;
+}
+
+  
