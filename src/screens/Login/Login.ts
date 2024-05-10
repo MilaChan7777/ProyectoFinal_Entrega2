@@ -36,15 +36,15 @@ class Login extends HTMLElement {
 			this.shadowRoot!.innerHTML += `
       <main style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
         <div class="form-container">
-        <h3 class="vanguardTitle">Vanguard</h3>
-        <p> Create and connect </p>
+        <h1 class="vanguardTitle">Vanguard</h1>
+        <p class="slogan"> Create and connect </p>
           <form>
-            <button id="signUpButton">Sign Up</button>
-            <h1>Username</h1>
+            <h4>Username</h4>
             <input type="email" placeholder="Email"/>
-            <h1>Password</h1>
+            <h4>Password</h4>
             <input type="password" placeholder="Password" />
             <button id="logInButton">LogIn</button>
+						<button id="signUpButton">Create new account</button>
           </form>
         </div>
       </main>

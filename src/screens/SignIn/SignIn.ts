@@ -34,20 +34,21 @@ class SignIn extends HTMLElement {
 
 			this.shadowRoot.innerHTML += `
                 <main style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-                    <h3 class="vanguardTitle">Vanguard</h3>
-                    <p>Create and connect</p>
                     <div class="form-container">
                         <form>
-                            <h1>Username</h1>
-                            <input type="text" placeholder="Create an username" />
-                            <h1>Birthday</h1>
-                            <input type="date" placeholder="dd/mm/aa"/>
-                            <h1>E-mail</h1>
+												<h1 class="vanguardTitle">Vanguard</h1>
+												<p class="slogan">Create and connect</p>
+                            <h4>Username</h4>
+                            <input type="text" placeholder="" />
+                            <h4>Birthday</h4>
+                            <input type="date" placeholder=""/>
+                            <h4>E-mail</h4>
                             <input type="email" placeholder="" />
-                            <h1>Password</h1>
-                            <input type="password" placeholder="Password" />
-                            <button id="signinButton">Sign in</button> <!-- Corregido aquí -->
+                            <h4>Password</h4>
+                            <input type="password" placeholder="" />
                         </form>
+												<button id="signinButton">Sign in</button>
+
                         <button id="loginButton">Already have an account?</button>
                     </div>
                 </main>
