@@ -36,11 +36,9 @@ class Profilehead extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-			<section>
-	        <div class="user">
-	        <img src=${this.profilepic}></img>
+	        <img class="userimg" src=${this.profilepic}></img>
             <p class="username">${this.name}</p>
-			<p>${this.followers} seguidores</p>
+			<p class="followers">${this.followers} seguidores</p>
             `;
 		    }
 		const cssUserpost = this.ownerDocument.createElement('style');
