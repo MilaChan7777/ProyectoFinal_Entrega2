@@ -1,4 +1,4 @@
-
+import styles from './postButton.css'
 
 export enum AttributeinputPost {
 	'image' = 'image',
@@ -39,9 +39,9 @@ class Postbutton extends HTMLElement {
             </div>
             `;
 		    }
-		// const cssUserpost = this.ownerDocument.createElement('style');
-		// cssUserpost.innerHTML = styles;
-		// this.shadowRoot?.appendChild(cssUserpost);
+		const cssButtonpost = this.ownerDocument.createElement('style');
+		cssButtonpost.innerHTML = styles;
+		this.shadowRoot?.appendChild(cssButtonpost);
 	}
 }
 
