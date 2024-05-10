@@ -12,10 +12,11 @@ class Login extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+		addObserver(this);
 
 		const signUpButton = this.shadowRoot?.querySelector('#signUpButton');
 		signUpButton?.addEventListener('click', () => {
-			dispatch(changeScreen('SIGNUP'));
+			dispatch(changeScreen('SIGNIN'));
 		});
 
 		const logInButton = this.shadowRoot?.querySelector('#logInButton');

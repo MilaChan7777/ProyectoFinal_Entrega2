@@ -13,7 +13,6 @@ import { data } from '../../services/data';
 import { dispatch, addObserver } from '../../store/store';
 import { changeScreen } from '../../store/actions';
 
-
 import stylesApp from './Home.css';
 import { AttributeComment } from '../../components/buttonPosts/Commentbtn/comment';
 import { AttributeSave } from '../../components/buttonPosts/Savebtn/save';
@@ -25,23 +24,23 @@ class Dashboard extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
-        addObserver(this)
+		addObserver(this);
 	}
 
 	connectedCallback() {
 		this.render();
-        const Homebutton = this.shadowRoot?.querySelector('#homebutton');
-		Homebutton?.addEventListener('click', ()=>{
-		dispatch(changeScreen('LOGIN'))
-		})
+		const Homebutton = this.shadowRoot?.querySelector('#homebutton');
+		Homebutton?.addEventListener('click', () => {
+			dispatch(changeScreen('LOGIN'));
+		});
 	}
 
 	render() {
-        this.Feed = [];
-        const container = this.ownerDocument.createElement('section');
+		this.Feed = [];
+		const container = this.ownerDocument.createElement('section');
 		container.setAttribute('id', 'container');
 		const userData = data;
-        		userData.forEach((user) => {
+		userData.forEach((user) => {
 			const usersDataElement = document.createElement('my-usersdata') as usersData;
 
 			const post = document.createElement('section');
@@ -99,7 +98,7 @@ class Dashboard extends HTMLElement {
 		Menu.appendChild(Profile);
 
 		this.Feed.push(Menu);
-        this.Feed.push(container);
+		this.Feed.push(container);
 		this.shadowRoot?.appendChild(container);
 
 		if (this.shadowRoot) {
@@ -111,5 +110,5 @@ class Dashboard extends HTMLElement {
 		this.shadowRoot?.appendChild(cssContainer);
 	}
 }
-export default Dashboard
-customElements.define('app-dashboard',Dashboard)
+export default Dashboard;
+customElements.define('app-dashboard', Dashboard);
