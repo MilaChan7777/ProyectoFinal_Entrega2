@@ -21,8 +21,10 @@ class Inputpost extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-	        <input class="Image" type="file" placeholder="añade una imagen">
-            <input class="Description" type="text" placeholder="Añade una descripción">
+	        <label for="file-input">
+  			<input type="file" id="file-input" style="display: none;">
+			</label>
+            <input id="description" type="text" placeholder="Añade una descripción">
             `;
 		    }
 			const cssInputpost = this.ownerDocument.createElement('style');
