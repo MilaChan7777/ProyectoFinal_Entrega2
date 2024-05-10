@@ -1,16 +1,21 @@
 import styles from './search.css';
+import { dispatch } from '../../../store/store';
+import { addObserver } from '../../../store/store';
+import { changeScreen } from '../../../store/actions';
+
 export enum AttributeSearch {
 	'image' = 'image',
 }
 
 class Search extends HTMLElement {
 	image?: string;
-	public index: number= 0
+	public index: number = 0;
 
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
 		this.onButtonClicked = this.onButtonClicked.bind(this);
+		addObserver(this);
 	}
 
 	static get observedAttributes() {
@@ -52,18 +57,7 @@ class Search extends HTMLElement {
 	}
 
 	onButtonClicked() {
-		// const currentValue = this.getAttribute('image');
-		// this.setAttribute('image', '../icons/SearchClicked.png');
-		// this.render();
-
-		const currentImage = this.shadowRoot?.querySelector('img')?.getAttribute('src');
-			if (this.index === 0) {
-			this.setAttribute('image', '../icons/SearchClicked.png');
-			this.index ++
-			} else {
-			this.setAttribute('image', '../icons/Search.png');
-			this.index --	
-			}
+		dispatch(changeScreen('SEARCH'));
 	}
 }
 

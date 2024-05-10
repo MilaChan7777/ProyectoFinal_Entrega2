@@ -6,8 +6,9 @@ import { addObserver, appState } from './store/store';
 import './screens/Dashboard/Home';
 import './screens/Post/Post';
 import './screens/SignIn/SignIn';
-import './screens/Login/Login'
-import './screens/Search/Search'
+import './screens/Login/Login';
+import './screens/Search/Search';
+import './screens/Profile/Profile';
 
 import usersData, { AttributeUser } from './components/userPosts/userPosts';
 import { data } from './services/data';
@@ -16,6 +17,7 @@ import Post from './screens/Post/Post';
 import Dashboard from './screens/Dashboard/Home';
 import SignIn from './screens/SignIn/SignIn';
 import Login from './screens/Login/Login';
+import Profile from './screens/Profile/Profile';
 import searchScreen from './screens/Search/Search';
 import { Search } from './components/indexPadre';
 
@@ -60,6 +62,11 @@ class AppContainer extends HTMLElement {
 			case 'SEARCH':
 				const search = this.ownerDocument.createElement('app-search') as Search;
 				this.shadowRoot?.appendChild(search);
+				break;
+
+			case 'PROFILE':
+				const profile = this.ownerDocument.createElement('app-profile') as Profile;
+				this.shadowRoot?.appendChild(profile);
 				break;
 
 			default:

@@ -15,12 +15,12 @@ class SignIn extends HTMLElement {
 
 		const signInButton = this.shadowRoot?.querySelector('#signinButton');
 		signInButton?.addEventListener('click', () => {
-			dispatch(changeScreen('LOGIN'));
+			dispatch(changeScreen('DASHBOARD'));
 		});
 
 		const logInButton = this.shadowRoot?.querySelector('#loginButton');
 		logInButton?.addEventListener('click', () => {
-			dispatch(changeScreen('DASHBOARD'));
+			dispatch(changeScreen('LOGIN'));
 		});
 	}
 
