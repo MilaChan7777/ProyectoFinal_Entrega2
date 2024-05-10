@@ -33,10 +33,9 @@ class Postbutton extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-            <div class="postButton">
-	        <button type="submit">Add hashtags</button>
-            <button type="submit">Post</button>
-            </div>
+	        <button id="Hashtags" type="submit">Add hashtags</button>
+			<hr>
+            <button id="Post" type="submit">Post</button>
             `;
 		    }
 		const cssButtonpost = this.ownerDocument.createElement('style');
