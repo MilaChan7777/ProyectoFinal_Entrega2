@@ -1,4 +1,4 @@
-import styles from './userPosts.css';
+import styles from './profileInter.css';
 
 export enum AttributeprofileInter {
 	'description' = 'description',
@@ -41,4 +41,4 @@ class Profileinter extends HTMLElement {
 }
 
 export default Profileinter;
-customElements.define('profileInter', Profileinter);
+customElements.define('profile-inter', Profileinter);
