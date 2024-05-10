@@ -1,7 +1,4 @@
-// import { Home } from './components/indexPadre';
-// import { Search } from './components/indexPadre';
-// import { Post } from './components/indexPadre';
-// import { Profile } from './components/indexPadre';
+
 import { addObserver, appState } from './store/store';
 import './screens/Dashboard/Home';
 import './screens/Post/Post';
@@ -10,15 +7,12 @@ import './screens/Login/Login';
 import './screens/Search/Search';
 import './screens/Profile/Profile';
 
-import usersData, { AttributeUser } from './components/userPosts/userPosts';
-import { data } from './services/data';
 import stylesApp from './index.css';
 import Post from './screens/Post/Post';
 import Dashboard from './screens/Dashboard/Home';
 import SignIn from './screens/SignIn/SignIn';
 import Login from './screens/Login/Login';
 import Profile from './screens/Profile/Profile';
-import searchScreen from './screens/Search/Search';
 import { Search } from './components/indexPadre';
 
 class AppContainer extends HTMLElement {
