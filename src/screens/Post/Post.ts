@@ -32,8 +32,12 @@ class Postinput extends HTMLElement {
 
 	render() {
 		if(this.shadowRoot){
+
+		const container = document.createElement('container')
+		container.classList.add('container')
+
 		const section = document.createElement('section')
-		section.classList.add('container')
+		section.classList.add('post')
 
 		const Menu = document.createElement('section');
 		Menu.classList.add('menu-bar');
@@ -62,6 +66,7 @@ class Postinput extends HTMLElement {
 		const profileHead = document.createElement('app-profilehead');
 		profileHead.setAttribute(Attributeposthead.profilepic, 'https://i.pinimg.com/236x/ab/32/31/ab32318e982048561a4b1f0508b265bb.jpg')
 		profileHead.setAttribute(Attributeposthead.name, 'Santi.gumi')
+		profileHead.setAttribute(Attributeposthead.followers, '41')
 		section.appendChild(profileHead)
 
 		const input = document.createElement('input-post')
@@ -70,7 +75,8 @@ class Postinput extends HTMLElement {
 		const button = document.createElement('button-post')
 		section.appendChild(button)
 
-		this.shadowRoot.appendChild(section)
+		container.appendChild(section)
+		this.shadowRoot.appendChild(container)
 		
 		}
 		const cssUserpost = this.ownerDocument.createElement('style');
