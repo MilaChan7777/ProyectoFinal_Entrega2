@@ -8,8 +8,6 @@ import { Save } from '../../components/indexPadre';
 import { Comment } from '../../components/indexPadre';
 import { Star } from '../../components/indexPadre';
 
-import { data } from '../../services/data';
-
 import { dispatch, addObserver } from '../../store/store';
 import { changeScreen } from '../../store/actions';
 
@@ -17,6 +15,8 @@ import stylesApp from './Home.css';
 import { AttributeComment } from '../../components/buttonPosts/Commentbtn/comment';
 import { AttributeSave } from '../../components/buttonPosts/Savebtn/save';
 import { AttributeStar } from '../../components/buttonPosts/Starbtn/star';
+
+import { getPosts } from '../../utils/firebase'
 
 class Dashboard extends HTMLElement {
 	Feed: HTMLElement[] = [];
@@ -35,11 +35,11 @@ class Dashboard extends HTMLElement {
 		});
 	}
 
-	render() {
+	async render() {
 		this.Feed = [];
 		const container = this.ownerDocument.createElement('section');
 		container.setAttribute('id', 'container');
-		const userData = data;
+		const userData = await getPosts();
 		userData.forEach((user) => {
 			const usersDataElement = document.createElement('my-usersdata') as usersData;
 
@@ -51,7 +51,7 @@ class Dashboard extends HTMLElement {
 
 			usersDataElement.setAttribute(AttributeUser.image, user.image);
 			usersDataElement.setAttribute(AttributeUser.description, user.description);
-			usersDataElement.setAttribute(AttributeUser.tag, user.tags.tag);
+			usersDataElement.setAttribute(AttributeUser.tag, user.tag);
 
 			const saveButton = document.createElement('save-button') as Save;
 			saveButton.setAttribute(AttributeSave.image, '../icons/Guardar.png');
