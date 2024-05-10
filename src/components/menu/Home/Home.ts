@@ -1,4 +1,8 @@
 import styles from './Home.css';
+import { dispatch } from '../../../store/store';
+import { changeScreen } from '../../../store/actions';
+import { addObserver } from '../../../store/store';
+
 export enum AttributeHome {
 	'image' = 'image',
 }
@@ -11,6 +15,7 @@ class Home extends HTMLElement {
 		super();
 		this.attachShadow({ mode: 'open' });
 		this.onButtonClicked = this.onButtonClicked.bind(this);
+		addObserver(this)
 	}
 
 	static get observedAttributes() {
@@ -52,20 +57,8 @@ class Home extends HTMLElement {
 	}
 
 	onButtonClicked() {
-		// const currentValue = this.getAttribute('image');
-		// this.setAttribute('image', '../icons/HomeClicked.png');
-		// this.render();
-
-		const currentImage = this.shadowRoot?.querySelector('img')?.getAttribute('src');
-			if (this.index === 0) {
-			this.setAttribute('image', '../icons/HomeClicked.png');
-			this.index ++
-			} else {
-			this.setAttribute('image', '../icons/Home.png');
-			this.index --	
-			}
+		dispatch(changeScreen('DASHBOARD'))
 	}
 }
-
 export default Home;
 customElements.define('home-button', Home);
