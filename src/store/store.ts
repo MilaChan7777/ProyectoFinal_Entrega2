@@ -1,6 +1,6 @@
 import { reducer } from './reducers';
 export let appState = {
-	screen: 'SIGNIN',
+	screen: 'LOGIN',
 };
 
 let observers: any = [];

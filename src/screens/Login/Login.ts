@@ -2,7 +2,7 @@ import { changeScreen } from '../../store/actions';
 import { addObserver } from '../../store/store';
 import { dispatch } from '../../store/store';
 
-import styles from './styles.css';
+import styles from './Login.css';
 
 class Login extends HTMLElement {
 	constructor() {

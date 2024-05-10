@@ -5,6 +5,9 @@
 import { addObserver, appState } from './store/store';
 import './screens/Dashboard/Home';
 import './screens/Post/Post';
+import './screens/SignIn/SignIn';
+import './screens/Login/Login'
+import './screens/Search/Search'
 
 import usersData, { AttributeUser } from './components/userPosts/userPosts';
 import { data } from './services/data';
