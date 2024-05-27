@@ -1,5 +1,4 @@
 import Home, { AttributeHome } from '../../components/menu/Home/Home';
-import Search, { AttributeSearch } from '../../components/menu/Search/Search';
 import Post, { AttributePost } from '../../components/menu/Post/Post';
 import Profile, { AttributeProfile } from '../../components/menu/Profile/Profile';
 
@@ -77,7 +76,6 @@ class Dashboard extends HTMLElement {
 		const Menu = document.createElement('section');
 		Menu.classList.add('menu-bar');
 		const Home = document.createElement('home-button') as Home;
-		const Search = document.createElement('search-button') as Search;
 		const Post = document.createElement('post-button') as Post;
 		const Profile = document.createElement('profile-button') as Profile;
 
@@ -88,12 +86,10 @@ class Dashboard extends HTMLElement {
 		Menu.appendChild(Logo);
 
 		Home.setAttribute(AttributeHome.image, '../icons/Home.png');
-		Search.setAttribute(AttributeSearch.image, '../icons/Search.png');
 		Post.setAttribute(AttributePost.image, '../icons/Post.png');
 		Profile.setAttribute(AttributeProfile.image, '../icons/Profile.png');
 
 		Menu.appendChild(Home);
-		Menu.appendChild(Search);
 		Menu.appendChild(Post);
 		Menu.appendChild(Profile);
 
