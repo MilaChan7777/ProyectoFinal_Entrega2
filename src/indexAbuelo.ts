@@ -4,7 +4,6 @@ import './screens/Dashboard/Home';
 import './screens/Post/Post';
 import './screens/SignIn/SignIn';
 import './screens/Login/Login';
-import './screens/Search/Search';
 import './screens/Profile/Profile';
 
 import stylesApp from './index.css';
@@ -13,7 +12,7 @@ import Dashboard from './screens/Dashboard/Home';
 import SignIn from './screens/SignIn/SignIn';
 import Login from './screens/Login/Login';
 import Profile from './screens/Profile/Profile';
-import { Search } from './components/indexPadre';
+
 
 class AppContainer extends HTMLElement {
 	constructor() {
@@ -51,11 +50,6 @@ class AppContainer extends HTMLElement {
 			case 'LOGIN':
 				const login2 = this.ownerDocument.createElement('app-login') as Login;
 				this.shadowRoot?.appendChild(login2);
-				break;
-
-			case 'SEARCH':
-				const search = this.ownerDocument.createElement('app-search') as Search;
-				this.shadowRoot?.appendChild(search);
 				break;
 
 			case 'PROFILE':
