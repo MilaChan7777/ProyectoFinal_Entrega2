@@ -1,4 +1,3 @@
-import Inputpost, { AttributeinputPost } from '../../components/inputPost/inputPost';
 import profileHead, { Attributeposthead } from '../../components/profileHead/profileHead';
 import styles from './Post.css';
 
@@ -73,8 +72,8 @@ class Postinput extends HTMLElement {
 
 		container.appendChild(section)
 		this.shadowRoot.appendChild(container)
-		
 		}
+
 		const cssUserpost = this.ownerDocument.createElement('style');
 		cssUserpost.innerHTML = styles;
 		this.shadowRoot?.appendChild(cssUserpost);
