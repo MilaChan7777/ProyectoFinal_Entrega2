@@ -33,6 +33,9 @@ class Postbutton extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
+			<dialog>
+            <input type="text" placeholder="Add a tag"
+            </dialog>
 	        <button id="Hashtags" type="submit">Add hashtags</button>
 			<hr>
             <button id="Post" type="submit">Post</button>
