@@ -24,7 +24,10 @@ class Inputpost extends HTMLElement {
 	        <label for="file-input">
   			<input type="file" id="file-input" style="display: none;">
 			</label>
-            <input id="description" type="text" placeholder="Añade una descripción">
+			<input id="description" type="text" placeholder="Añade una descripción">
+			<div id="mid">
+			<p class="tag">Sin hashtags</p>
+			</div>
             `;
 		    }
 			const cssInputpost = this.ownerDocument.createElement('style');
