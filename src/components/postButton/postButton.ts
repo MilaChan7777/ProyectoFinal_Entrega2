@@ -59,10 +59,11 @@ class Postbutton extends HTMLElement {
 			dialogElement.id = "popUpTag";
 			dialogElement.innerHTML = `
 			<div id="Head">
-			<h2>Añade una etiqueta</h2>
+			<p>Añade una etiqueta</p>
 			<button id="closeButton">X</button>
 			</div>
 			<input type="text">
+			<button id="addButton">Añadir</button>
 			`;
 			this.shadowRoot?.appendChild(dialogElement)
 
