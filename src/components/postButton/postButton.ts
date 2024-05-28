@@ -28,22 +28,48 @@ class Postbutton extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
+		const addTags = this.shadowRoot?.querySelector('#Hashtags')
+		const modal = this.shadowRoot?.querySelector('#popUpTag') as HTMLDialogElement;
+		const close = this.shadowRoot?.querySelector('#closeButton')
+		addTags?.addEventListener("click", () =>{
+		modal.showModal()
+		})
+		close?.addEventListener("click", ()=>{
+		modal.close()
+		})
 	}
 
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-			<dialog>
-            <input type="text" placeholder="Add a tag"
-            </dialog>
-	        <button id="Hashtags" type="submit">Add hashtags</button>
-			<hr>
-            <button id="Post" type="submit">Post</button>
+			<button id="Hashtags" type="submit">Añadir hashtags</button>
+      		<hr>
+      		<button id="Post" type="submit">Publicar</button>
             `;
 		    }
-		const cssButtonpost = this.ownerDocument.createElement('style');
-		cssButtonpost.innerHTML = styles;
-		this.shadowRoot?.appendChild(cssButtonpost);
+			const popTag = document.createElement("div");
+			popTag.id = ""
+			const hola = document.createElement("p")
+			hola.innerText = "Hola"
+			popTag.appendChild(hola)
+			popTag.style.display = 'none'
+			this.shadowRoot?.appendChild(popTag)
+
+			const dialogElement = document.createElement("dialog");
+			dialogElement.id = "popUpTag";
+			dialogElement.innerHTML = `
+			<div id="Head">
+			<h2>Añade una etiqueta</h2>
+			<button id="closeButton">X</button>
+			</div>
+			<input type="text">
+			`;
+			this.shadowRoot?.appendChild(dialogElement)
+
+
+			const cssButtonpost = this.ownerDocument.createElement('style');
+			cssButtonpost.innerHTML = styles;
+			this.shadowRoot?.appendChild(cssButtonpost);
 	}
 }
 
