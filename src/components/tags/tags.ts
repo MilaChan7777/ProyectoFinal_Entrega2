@@ -15,7 +15,9 @@ class Tags extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-
+            <dialog>
+            <input type="text" placeholder="Add a tag"
+            </dialog>
             `;
 		    }
 		const cssUserpost = this.ownerDocument.createElement('style');
