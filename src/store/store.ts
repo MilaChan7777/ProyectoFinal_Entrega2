@@ -6,12 +6,12 @@ export let emptyState = {
 	screen: 'SIGNIN',
 };
 
-export let appState = Storage.get({key:  PersistenceKey.POST, defaultValue: emptyState})
+export let appState = Storage.get({key:  PersistenceKey.STATE, defaultValue: emptyState})
 
 let observers: any = [];
 
 const persisStore = (state: any) => {
-	Storage.set({key: PersistenceKey.POST, value: state, session: false})
+	Storage.set({key: PersistenceKey.STATE, value: state, session: false})
 }
 const notifyObservers = () => observers.forEach((o: any) => o.render());
 

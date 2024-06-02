@@ -1,5 +1,5 @@
 export enum PersistenceKey {
-    'POST' = 'POST'
+    'STATE' = 'STATE'
 }
 
 const get = ({key, defaultValue}: {key: PersistenceKey; defaultValue: unknown}) => {
