@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyCJ3zQIujLQ1qj-nF0ADd8xP8oV4O2s4bA',
@@ -17,6 +18,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app)
 
 export const getPosts = async () => {
     const querySnapshot = await getDocs(collection(db, 'vanguardUsersPosts'));
@@ -28,3 +30,16 @@ export const getPosts = async () => {
     });
     return arrayPosts
 }
+
+export const createUser = (email: string, password: string) => {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) =>{
+        const user = userCredential
+    })
+    .catch((error: any)=>{
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorCode, errorMessage)
+    })
+}
+
