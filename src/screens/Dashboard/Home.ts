@@ -39,6 +39,9 @@ class Dashboard extends HTMLElement {
 		const container = this.ownerDocument.createElement('section');
 		container.setAttribute('id', 'container');
 		const userData = await getPosts();
+		sessionStorage.setItem('Posts', JSON.stringify(userData))
+		const getPost = sessionStorage.getItem('Posts') || '[]'
+		const post = JSON.parse(getPost) 
 		userData.forEach((user) => {
 			const usersDataElement = document.createElement('my-usersdata') as usersData;
 
