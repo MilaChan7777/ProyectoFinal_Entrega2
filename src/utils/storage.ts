@@ -2,7 +2,7 @@ export enum PersistenceKey {
     'POST' = 'POST'
 }
 
-const get = (key: PersistenceKey, defaultValue: unknown) => {
+const get = ({key, defaultValue}: {key: PersistenceKey; defaultValue: unknown}) => {
     const value = localStorage.getItem(key) || sessionStorage.getItem(key)
     return value ? JSON.parse(value) : defaultValue;
 }
