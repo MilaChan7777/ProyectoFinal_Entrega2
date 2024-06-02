@@ -1,13 +1,13 @@
 import styles from './inputsInfo.css'
 
 export enum AttributeinputInfo {
-	'Title' = 'Title',
+	'titulo' = 'titulo',
 	'type' = 'type',
     'placeholder' = 'placeholder'
 }
 
 class inputsInfo extends HTMLElement {
-	Title?: string;
+	titulo?: string;
 	type?: string;
     placeholder?: string
 
@@ -18,7 +18,7 @@ class inputsInfo extends HTMLElement {
 
 	static get observedAttributes() {
 		const attrs: Record<AttributeinputInfo, null> = {
-			Title: null,
+			titulo: null,
 			type: null,
             placeholder: null
 		};
@@ -36,7 +36,7 @@ class inputsInfo extends HTMLElement {
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = `
-            <h3>${this.Title}</h3>
+            <h4>${this.titulo}</h4>
             <input type="${this.type}" placeholder="${this.placeholder}">
             `;
 		    }
