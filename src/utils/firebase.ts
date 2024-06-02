@@ -35,6 +35,8 @@ export const createUser = (email: string, password: string) => {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) =>{
         const user = userCredential
+        console.log(user);
+        
     })
     .catch((error: any)=>{
         const errorCode = error.code;
