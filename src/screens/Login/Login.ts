@@ -1,8 +1,10 @@
 import { changeScreen } from '../../store/actions';
 import { addObserver } from '../../store/store';
 import { dispatch } from '../../store/store';
+import Inputpost from '../../components/inputPost/inputPost';
 
 import styles from './Login.css';
+import { AttributeinputInfo } from '../../components/inputsInfo/inputsInfo';
 
 class Login extends HTMLElement {
 	constructor() {
@@ -33,22 +35,47 @@ class Login extends HTMLElement {
 			css.innerHTML = styles;
 			this.shadowRoot?.appendChild(css);
 
-			this.shadowRoot!.innerHTML += `
-      <main style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-        <div class="form-container">
-        <h1 class="vanguardTitle">Vanguard</h1>
-        <p class="slogan"> Create and connect </p>
-          <form>
-            <h4>Username</h4>
-            <input type="email" placeholder="Email"/>
-            <h4>Password</h4>
-            <input type="password" placeholder="Password" />
-            <button id="logInButton">LogIn</button>
-						<button id="signUpButton">Create new account</button>
-          </form>
-        </div>
-      </main>
-      `;
+			const main = document.createElement('main')
+			this.shadowRoot.appendChild(main)
+
+			const section = document.createElement('section')
+			section.className = "form-container"
+			main.appendChild(section)
+
+			const vanguardTitle = document.createElement('h1')
+			vanguardTitle.className = 'vanguardTitle'
+			vanguardTitle.innerText = 'Vanguard'
+			section.appendChild(vanguardTitle)
+
+			const slogan = document.createElement('p')
+			slogan.className = 'slogan'
+			slogan.innerText = 'Create and connect'
+			section.appendChild(slogan)
+
+			const form = document.createElement('form')
+			section.appendChild(form)
+
+			const username = document.createElement ('input-info')
+			username.setAttribute(AttributeinputInfo.titulo, 'Username')
+			username.setAttribute(AttributeinputInfo.placeholder, 'Email')
+			username.setAttribute(AttributeinputInfo.type, 'email')
+			form.appendChild(username)
+
+			const password = document.createElement ('input-info')
+			password.setAttribute(AttributeinputInfo.titulo, "Password")
+			password.setAttribute(AttributeinputInfo.placeholder, 'Password')
+			password.setAttribute(AttributeinputInfo.type, 'password')
+			form.appendChild(password)
+
+			const loginButton = document.createElement('button');
+			loginButton.id = 'logInButton'
+			loginButton.innerText = 'Login'
+			form.appendChild(loginButton)
+
+			const signInButton = document.createElement('button');
+			signInButton.id = 'signUpButton'
+			signInButton.innerText = 'Create new account'
+			form.appendChild(signInButton)
 		}
 	}
 }
