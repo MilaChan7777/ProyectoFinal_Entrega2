@@ -56,7 +56,7 @@ class Login extends HTMLElement {
 			section.appendChild(form)
 
 			const username = document.createElement ('input-info')
-			username.setAttribute(AttributeinputInfo.titulo, 'Username')
+			username.setAttribute(AttributeinputInfo.titulo, 'Email')
 			username.setAttribute(AttributeinputInfo.placeholder, 'Email')
 			username.setAttribute(AttributeinputInfo.type, 'email')
 			form.appendChild(username)
