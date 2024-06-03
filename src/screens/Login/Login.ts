@@ -2,9 +2,13 @@ import { changeScreen } from '../../store/actions';
 import { addObserver } from '../../store/store';
 import { dispatch } from '../../store/store';
 import Inputpost from '../../components/inputPost/inputPost';
-
+import { logIn } from '../../utils/firebase';
 import styles from './Login.css';
 
+const formData = {
+	email: '',
+	password: ''
+}
 class Login extends HTMLElement {
 	constructor() {
 		super();
@@ -14,18 +18,21 @@ class Login extends HTMLElement {
 	connectedCallback() {
 		this.render();
 		addObserver(this);
-
-		const signUpButton = this.shadowRoot?.querySelector('#signUpButton');
-		signUpButton?.addEventListener('click', () => {
-			dispatch(changeScreen('SIGNIN'));
-		});
-
-		const logInButton = this.shadowRoot?.querySelector('#logInButton');
-		logInButton?.addEventListener('click', () => {
-			dispatch(changeScreen('DASHBOARD'));
-		});
 	}
 
+	logEmail(e: any) {
+		formData.email = e.target.value
+	}
+
+	logPassword(e: any) {
+		formData.password = e.target.value
+	}
+
+	submitForm(){
+		logIn(formData)
+		console.log(formData);
+		
+	}
 	render() {
 		if (this.shadowRoot) {
 			this.shadowRoot.innerHTML = '';
@@ -52,19 +59,25 @@ class Login extends HTMLElement {
 			section.appendChild(slogan)
 
 			const form = document.createElement('form')
+			form.addEventListener('submit', (event) =>{
+			event.preventDefault();
+			})
 			section.appendChild(form)
 
 			const username = document.createElement ('input')
 			username.placeholder = 'Email'
+			username.addEventListener('input', (e) => this.logEmail(e))
 			form.appendChild(username)
 
 			const password = document.createElement ('input')
 			password.placeholder = 'Password'
+			password.addEventListener('input', (e) => this.logPassword(e))
 			form.appendChild(password)
 
 			const loginButton = document.createElement('button');
 			loginButton.id = 'logInButton'
-			loginButton.innerText = 'Login'
+			loginButton.innerText = 'Logi'
+			loginButton.addEventListener('click', this.submitForm)
 			form.appendChild(loginButton)
 
 			const signInButton = document.createElement('button');
