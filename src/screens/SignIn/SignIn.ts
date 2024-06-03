@@ -3,7 +3,6 @@ import { addObserver } from '../../store/store';
 import { dispatch } from '../../store/store';
 import styles from './SignIn.css';
 import { createUser  } from '../../utils/firebase';
-import { AttributeinputInfo } from '../../components/inputsInfo/inputsInfo';
 
 const formData = {
 	email: '',
@@ -62,17 +61,23 @@ class SignIn extends HTMLElement {
 			const form = document.createElement('form')
 			section.appendChild(form)
 
+			const emailTitle = document.createElement('h4')
+			emailTitle.innerText = 'Email'
+			form.appendChild(emailTitle)
 			const email = document.createElement ('input')
 			email.placeholder = 'Email'
 			email.addEventListener('input', (e) => this.addEmail(e))
 			form.appendChild(email)
 
+			const birthdayTitle = document.createElement('h4')
+			birthdayTitle.innerText = 'Birthday'
+			form.appendChild(birthdayTitle)
 			const birthday = document.createElement ('input-info')
-			birthday.setAttribute(AttributeinputInfo.titulo, 'Birthday')
-			birthday.setAttribute(AttributeinputInfo.placeholder, '')
-			birthday.setAttribute(AttributeinputInfo.type, 'date')
 			form.appendChild(birthday)
 
+			const passwordTitle = document.createElement('h4')
+			emailTitle.innerText = 'Password'
+			form.appendChild(passwordTitle)
 			const password = document.createElement ('input')
 			password.placeholder = 'Password'
 			password.id = 'password'
