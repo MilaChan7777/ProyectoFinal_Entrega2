@@ -32,15 +32,15 @@ export const getPosts = async () => {
     return arrayPosts
 }
 
-export const createUser = (formData: any) => {
-    createUserWithEmailAndPassword(auth, formData.email, formData.password)
+export const createUser = async (formData: any) => {
+    await createUserWithEmailAndPassword(auth, formData.email, formData.password)
     .then(async(userCredential) =>{
         const user = userCredential.user
         console.log(user);
         try {
             const where = doc(db, 'users', user.uid)
             const data = {
-            Birthday: formData.age
+            birthday: formData.date
             };
             await setDoc(where, data);
             alert('Se creo el usuario')
@@ -61,5 +61,11 @@ export const logIn = (formData: any) => {
  .then(async(userCredential) => {
     const user = userCredential.user;
     console.log(user.uid)
+ })
+ .catch ((error: any)=>{
+    const errorCode = error.code;
+    const errorMessage = error.message
+    console.log(formData)
+    console.error (errorCode, errorMessage)
  })
 }
