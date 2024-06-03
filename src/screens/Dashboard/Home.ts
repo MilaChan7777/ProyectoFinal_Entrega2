@@ -42,7 +42,7 @@ class Dashboard extends HTMLElement {
 		sessionStorage.setItem('Posts', JSON.stringify(userData))
 		const getPost = sessionStorage.getItem('Posts') || '[]'
 		const post = JSON.parse(getPost) 
-		userData.forEach((user) => {
+		post.forEach((user: any) => {
 			const usersDataElement = document.createElement('my-usersdata') as usersData;
 
 			const post = document.createElement('section');
