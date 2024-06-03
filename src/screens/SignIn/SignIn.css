@@ -27,7 +27,18 @@ form {
 	text-align: left;
 }
 
-
+input {
+	width: calc(100% - 20px); /* Ancho ajustado para el padding */
+	padding: 10px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 10px;
+	font-size: 16px;
+	background-color: rgba(241, 240, 240, 1);
+	outline: none;
+	text-align: left;
+	margin-bottom: 10px;
+}
 
 input[type='date']::placeholder {
 	color: #dfd9d9;
@@ -35,7 +46,7 @@ input[type='date']::placeholder {
 
 h4 {
 	font-size: 15px;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-family: Arial, Helvetica, sans-serif;
 	text-align: left;
 	margin-bottom: 5px;
 }
@@ -44,6 +55,7 @@ h1 {
 	font-size: 80px;
 	color: rgba(160, 23, 208, 1);
 	margin-bottom: -10px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .slogan {
