@@ -1,9 +1,10 @@
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { getFirestore, setDoc } from "firebase/firestore";
+import { collection, doc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth"
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyDblKMSaGR3l3VUP8Gcylpskcio8hM7cdQ",
@@ -31,11 +32,21 @@ export const getPosts = async () => {
     return arrayPosts
 }
 
-export const createUser = (email: string, password: string) => {
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) =>{
+export const createUser = (formData: any) => {
+    createUserWithEmailAndPassword(auth, formData.email, formData.password)
+    .then(async(userCredential) =>{
         const user = userCredential.user
         console.log(user);
+        try {
+            const where = doc(db, 'users', user.uid)
+            const data = {
+            Birthday: formData.age
+            };
+            await setDoc(where, data);
+            alert('Se creo el usuario')
+        } catch (error) {
+            console.error(error)
+        }
         
     })
     .catch((error: any)=>{
@@ -45,3 +56,10 @@ export const createUser = (email: string, password: string) => {
     })
 }
 
+export const logIn = (formData: any) => {
+ signInWithEmailAndPassword(auth, formData.email, formData.password)
+ .then(async(userCredential) => {
+    const user = userCredential.user;
+    console.log(user.uid)
+ })
+}
