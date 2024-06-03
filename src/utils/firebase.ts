@@ -6,13 +6,13 @@ import { getDocs } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyCJ3zQIujLQ1qj-nF0ADd8xP8oV4O2s4bA',
-	authDomain: 'posts-d5116.firebaseapp.com',
-	projectId: 'posts-d5116',
-	storageBucket: 'posts-d5116.appspot.com',
-	messagingSenderId: '381209847571',
-	appId: '1:381209847571:web:a2e7c0e5ebf331afa65ce6',
-	measurementId: 'G-TYKJ3QSXKJ',
+    apiKey: "AIzaSyDblKMSaGR3l3VUP8Gcylpskcio8hM7cdQ",
+    authDomain: "vanguard-35d26.firebaseapp.com",
+    projectId: "vanguard-35d26",
+    storageBucket: "vanguard-35d26.appspot.com",
+    messagingSenderId: "187651490470",
+    appId: "1:187651490470:web:f995465153247e0d556a67",
+    measurementId: "G-Q75K0PGBWK"
 };
 
 
@@ -34,7 +34,7 @@ export const getPosts = async () => {
 export const createUser = (email: string, password: string) => {
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) =>{
-        const user = userCredential
+        const user = userCredential.user
         console.log(user);
         
     })
