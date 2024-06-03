@@ -4,7 +4,6 @@ import { dispatch } from '../../store/store';
 import Inputpost from '../../components/inputPost/inputPost';
 
 import styles from './Login.css';
-import { AttributeinputInfo } from '../../components/inputsInfo/inputsInfo';
 
 class Login extends HTMLElement {
 	constructor() {
@@ -56,15 +55,9 @@ class Login extends HTMLElement {
 			section.appendChild(form)
 
 			const username = document.createElement ('input-info')
-			username.setAttribute(AttributeinputInfo.titulo, 'Email')
-			username.setAttribute(AttributeinputInfo.placeholder, 'Email')
-			username.setAttribute(AttributeinputInfo.type, 'email')
 			form.appendChild(username)
 
 			const password = document.createElement ('input-info')
-			password.setAttribute(AttributeinputInfo.titulo, "Password")
-			password.setAttribute(AttributeinputInfo.placeholder, 'Password')
-			password.setAttribute(AttributeinputInfo.type, 'password')
 			form.appendChild(password)
 
 			const loginButton = document.createElement('button');
