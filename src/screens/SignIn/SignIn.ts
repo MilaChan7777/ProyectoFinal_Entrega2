@@ -18,7 +18,7 @@ class SignIn extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
-		const logInButton = this.shadowRoot?.querySelector('#loginButton');
+		const logInButton = this.shadowRoot?.querySelector('#logInButton');
 		logInButton?.addEventListener('click', () => {
 			dispatch(changeScreen('LOGIN'));
 		});
@@ -72,15 +72,16 @@ class SignIn extends HTMLElement {
 			const birthdayTitle = document.createElement('h4')
 			birthdayTitle.innerText = 'Birthday'
 			form.appendChild(birthdayTitle)
-			const birthday = document.createElement ('input-info')
+			const birthday = document.createElement ('input')
+			birthday.type = 'date'
 			form.appendChild(birthday)
 
 			const passwordTitle = document.createElement('h4')
-			emailTitle.innerText = 'Password'
+			passwordTitle.innerText = 'Password'
 			form.appendChild(passwordTitle)
 			const password = document.createElement ('input')
+			password.type = 'password'
 			password.placeholder = 'Password'
-			password.id = 'password'
 			password?.addEventListener('input', (e) => this.addPassword(e))
 			form.appendChild(password)
 
