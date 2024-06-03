@@ -1,7 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, setDoc } from "firebase/firestore";
-import { collection, doc } from "firebase/firestore";
+import { collection, doc, addDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth"
 
@@ -20,6 +20,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app)
+
+
+export const addProduct = async (e: any) => {
+    try {
+      const where = collection(db, "products");
+      await addDoc(where, e);
+      console.log("se añadió con éxito");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 export const getPosts = async () => {
     const querySnapshot = await getDocs(collection(db, 'vanguardUsersPosts'));
@@ -69,3 +80,4 @@ export const logIn = (formData: any) => {
     console.error (errorCode, errorMessage)
  })
 }
+
