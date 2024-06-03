@@ -4,6 +4,7 @@ import { PersistenceKey } from '../utils/storage';
 
 export let emptyState = {
 	screen: 'SIGNIN',
+	post: [],
 };
 
 export let appState = Storage.get({key:  PersistenceKey.STATE, defaultValue: emptyState})
