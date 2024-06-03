@@ -5,6 +5,11 @@ export const reducer = (currentAction: any, currentState: any) =>{
         case 'changeScreen':
             currentState.screen = payload;
             break;
+            
+        case 'GETPOST':
+            currentState.post = payload;
+            break;
+        
     }
     return currentState;
 }
