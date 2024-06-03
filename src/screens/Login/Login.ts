@@ -54,10 +54,12 @@ class Login extends HTMLElement {
 			const form = document.createElement('form')
 			section.appendChild(form)
 
-			const username = document.createElement ('input-info')
+			const username = document.createElement ('input')
+			username.placeholder = 'Email'
 			form.appendChild(username)
 
-			const password = document.createElement ('input-info')
+			const password = document.createElement ('input')
+			password.placeholder = 'Password'
 			form.appendChild(password)
 
 			const loginButton = document.createElement('button');
