@@ -5,7 +5,7 @@ import styles from './SignIn.css';
 import { createUser  } from '../../utils/firebase';
 import { AttributeinputInfo } from '../../components/inputsInfo/inputsInfo';
 
-const FormData = {
+const formData = {
 	email: '',
 	password: ''
 }
@@ -19,22 +19,25 @@ class SignIn extends HTMLElement {
 
 	connectedCallback() {
 		this.render();
-
-		const signInButton = this.shadowRoot?.querySelector('#signinButton');
-		signInButton?.addEventListener('click', () => {
-			dispatch(changeScreen('DASHBOARD'));
-		});
-
 		const logInButton = this.shadowRoot?.querySelector('#loginButton');
 		logInButton?.addEventListener('click', () => {
 			dispatch(changeScreen('LOGIN'));
 		});
 	}
+		addEmail(e: any){
+		formData.email = e.target.value
+		} 
+	
+		addPassword(e: any){
+		formData.password = e.target.value	
+		}
+	
+		submitForm(){
+		createUser(formData.email, formData.password)
+		}
 
-	render() {
+	async render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = '';
-
 			const css = this.ownerDocument.createElement('style');
 			css.innerHTML = styles;
 			this.shadowRoot?.appendChild(css);
@@ -59,11 +62,9 @@ class SignIn extends HTMLElement {
 			const form = document.createElement('form')
 			section.appendChild(form)
 
-			const email = document.createElement ('input-info')
-			email.setAttribute(AttributeinputInfo.titulo, 'Email')
-			email.setAttribute(AttributeinputInfo.placeholder, 'Email')
-			email.setAttribute(AttributeinputInfo.type, 'email')
-			email.addEventListener('change', this.addEmail)
+			const email = document.createElement ('input')
+			email.placeholder = 'Email'
+			email.addEventListener('input', (e) => this.addEmail(e))
 			form.appendChild(email)
 
 			const birthday = document.createElement ('input-info')
@@ -72,16 +73,16 @@ class SignIn extends HTMLElement {
 			birthday.setAttribute(AttributeinputInfo.type, 'date')
 			form.appendChild(birthday)
 
-			const password = document.createElement ('input-info')
-			password.setAttribute(AttributeinputInfo.titulo, "Password")
-			password.setAttribute(AttributeinputInfo.placeholder, 'Password')
-			password.setAttribute(AttributeinputInfo.type, 'password')
-			password.addEventListener('change', this.addPassword)
+			const password = document.createElement ('input')
+			password.placeholder = 'Password'
+			password.id = 'password'
+			password?.addEventListener('input', (e) => this.addPassword(e))
 			form.appendChild(password)
 
 			const signInButton = document.createElement('button');
 			signInButton.id = 'signUpButton'
 			signInButton.innerText = 'Sign in'
+			signInButton.addEventListener('click', this.submitForm)
 			form.appendChild(signInButton)
 			
 			const loginButton = document.createElement('button');
@@ -91,17 +92,6 @@ class SignIn extends HTMLElement {
 		}
 	}
 
-	addEmail(e: any){
-	FormData.email = e?.target?.Value
-	}
-
-	addPassword(e: any){
-	FormData.password = e?.target?.Value
-	}
-
-	submitForm(){
-	createUser(FormData.email, FormData.password)
-	}
 }
 
 customElements.define('app-signin', SignIn);
