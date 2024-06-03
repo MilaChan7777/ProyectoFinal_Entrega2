@@ -7,15 +7,14 @@ import { Save } from '../../components/indexPadre';
 import { Comment } from '../../components/indexPadre';
 import { Star } from '../../components/indexPadre';
 
-import { dispatch, addObserver } from '../../store/store';
-import { changeScreen } from '../../store/actions';
+import { dispatch, addObserver, appState } from '../../store/store';
+import { changeScreen, getPostsAction } from '../../store/actions';
 
 import stylesApp from './Home.css';
 import { AttributeComment } from '../../components/buttonPosts/Commentbtn/comment';
 import { AttributeSave } from '../../components/buttonPosts/Savebtn/save';
 import { AttributeStar } from '../../components/buttonPosts/Starbtn/star';
 
-import { getPosts } from '../../utils/firebase'
 
 class Dashboard extends HTMLElement {
 	Feed: HTMLElement[] = [];
@@ -26,23 +25,27 @@ class Dashboard extends HTMLElement {
 		addObserver(this);
 	}
 
-	connectedCallback() {
+	async connectedCallback() {
 		this.render();
+
+		if (appState.posts.length === 0) {
+			const action = await getPostsAction();
+			dispatch(action)	
+		} else {
+			this.render();
+		}
+
 		const Homebutton = this.shadowRoot?.querySelector('#homebutton');
 		Homebutton?.addEventListener('click', () => {
 			dispatch(changeScreen('LOGIN'));
 		});
 	}
 
-	async render() {
+	render() {
 		this.Feed = [];
 		const container = this.ownerDocument.createElement('section');
 		container.setAttribute('id', 'container');
-		const userData = await getPosts();
-		sessionStorage.setItem('Posts', JSON.stringify(userData))
-		const getPost = sessionStorage.getItem('Posts') || '[]'
-		const post = JSON.parse(getPost) 
-		post.forEach((user: any) => {
+		appState.posts.forEach((user: any) => {
 			const usersDataElement = document.createElement('my-usersdata') as usersData;
 
 			const post = document.createElement('section');
