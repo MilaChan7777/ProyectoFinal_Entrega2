@@ -6,7 +6,8 @@ import { createUser  } from '../../utils/firebase';
 
 const formData = {
 	email: '',
-	password: ''
+	password: '',
+	date: ''
 }
 
 class SignIn extends HTMLElement {
@@ -30,9 +31,14 @@ class SignIn extends HTMLElement {
 		addPassword(e: any){
 		formData.password = e.target.value	
 		}
+
+		addBirthday(e: any){
+		formData.date = e.target.value
+		console.log(formData.date)
+		}
 	
 		submitForm(){
-		createUser(formData.email, formData.password)
+		createUser(formData)
 		}
 
 	async render() {
@@ -59,6 +65,9 @@ class SignIn extends HTMLElement {
 			section.appendChild(slogan)
 
 			const form = document.createElement('form')
+			form.addEventListener('submit', (event) =>{
+				event.preventDefault();
+				})
 			section.appendChild(form)
 
 			const emailTitle = document.createElement('h4')
@@ -74,6 +83,7 @@ class SignIn extends HTMLElement {
 			form.appendChild(birthdayTitle)
 			const birthday = document.createElement ('input')
 			birthday.type = 'date'
+			birthday.addEventListener('change', (e) => this.addBirthday(e))
 			form.appendChild(birthday)
 
 			const passwordTitle = document.createElement('h4')
