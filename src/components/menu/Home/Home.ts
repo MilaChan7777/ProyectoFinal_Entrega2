@@ -2,6 +2,7 @@ import styles from './Home.css';
 import { dispatch } from '../../../store/store';
 import { changeScreen } from '../../../store/actions';
 import { addObserver } from '../../../store/store';
+import { Screens } from '../../../types/navigation';
 
 export enum AttributeHome {
 	'image' = 'image',
@@ -57,7 +58,7 @@ class Home extends HTMLElement {
 	}
 
 	onButtonClicked() {
-		dispatch(changeScreen('DASHBOARD'))
+		dispatch(changeScreen(Screens.DASHBOARD))
 	}
 }
 export default Home;
