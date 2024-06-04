@@ -5,7 +5,6 @@ import { collection, doc, addDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth"
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyDblKMSaGR3l3VUP8Gcylpskcio8hM7cdQ",
     authDomain: "vanguard-35d26.firebaseapp.com",
@@ -19,7 +18,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth(app)
+export const auth = getAuth(app)
 
 
 export const addProduct = async (e: any) => {
