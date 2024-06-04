@@ -1,5 +1,7 @@
 import { getPosts } from "../utils/firebase"
-export const changeScreen = (screen: any) => {
+import { Screens } from "../types/navigation"
+
+export const changeScreen = (screen: Screens) => {
     return {
         action: 'changeScreen',
         payload: screen,
@@ -7,9 +9,16 @@ export const changeScreen = (screen: any) => {
 }
 
 export const getPostsAction = async () => {
-    const posts  = await getPosts()
+    const posts  = await getPosts();
     return {
         action: 'GETPOST',
         payload: posts
+    }
+}
+
+export const setUserCredentials = (user: string) => {
+    return {
+        action: 'SETUSER',
+        payload: user,
     }
 }
