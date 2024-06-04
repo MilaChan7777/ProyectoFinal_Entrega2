@@ -28,24 +28,20 @@ class Dashboard extends HTMLElement {
 	async connectedCallback() {
 		this.render();
 
-		if (appState.posts.length === 0) {
+		if (appState.post.length === 0) {
 			const action = await getPostsAction();
 			dispatch(action)	
 		} else {
 			this.render();
 		}
-
-		const Homebutton = this.shadowRoot?.querySelector('#homebutton');
-		Homebutton?.addEventListener('click', () => {
-			dispatch(changeScreen('LOGIN'));
-		});
 	}
 
 	render() {
+		console.log(appState.screen)
 		this.Feed = [];
 		const container = this.ownerDocument.createElement('section');
 		container.setAttribute('id', 'container');
-		appState.posts.forEach((user: any) => {
+		appState.post.forEach((user: any) => {
 			const usersDataElement = document.createElement('my-usersdata') as usersData;
 
 			const post = document.createElement('section');
