@@ -3,6 +3,7 @@ import { addObserver } from '../../store/store';
 import { dispatch } from '../../store/store';
 import styles from './SignIn.css';
 import { createUser  } from '../../utils/firebase';
+import { Screens } from '../../types/navigation';
 
 const formData = {
 	email: '',
@@ -21,7 +22,7 @@ class SignIn extends HTMLElement {
 		this.render();
 		const logInButton = this.shadowRoot?.querySelector('#logInButton');
 		logInButton?.addEventListener('click', () => {
-			dispatch(changeScreen('LOGIN'));
+			dispatch(changeScreen(Screens.LOGIN));
 		});
 	}
 		addEmail(e: any){
