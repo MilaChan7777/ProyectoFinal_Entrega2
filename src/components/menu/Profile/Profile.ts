@@ -1,6 +1,7 @@
 import styles from './profile.css';
 import { dispatch, addObserver } from '../../../store/store';
 import { changeScreen } from '../../../store/actions';
+import { Screens } from '../../../types/navigation';
 
 export enum AttributeProfile {
 	'image' = 'image',
@@ -56,7 +57,7 @@ class Profilebtn extends HTMLElement {
 	}
 
 	onButtonClicked() {
-		dispatch(changeScreen('PROFILE'))
+		dispatch(changeScreen(Screens.PROFILE))
 	}
 }
 
