@@ -1,6 +1,7 @@
 import styles from './post.css';
 import { dispatch, addObserver } from '../../../store/store';
 import { changeScreen } from '../../../store/actions';
+import { Screens } from '../../../types/navigation';
 
 export enum AttributePost {
 	'image' = 'image',
@@ -57,7 +58,7 @@ class Post extends HTMLElement {
 	}
 
 	onButtonClicked() {
-	dispatch(changeScreen('POST'))
+	dispatch(changeScreen(Screens.POST))
 	}
 }
 
