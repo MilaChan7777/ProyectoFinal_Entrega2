@@ -10,6 +10,7 @@ import { addObserver } from '../../store/store';
 import { dispatch } from '../../store/store';
 import '../../components/inputPost/inputPost';
 import '../../components/postButton/postButton';
+import { Screens } from '../../types/navigation';
 
 class Postinput extends HTMLElement {
 
@@ -24,7 +25,7 @@ class Postinput extends HTMLElement {
 		this.render();
 		const Homebutton = this.shadowRoot?.querySelector('#homebutton');
 		Homebutton?.addEventListener('click', ()=>{
-		dispatch(changeScreen('DASHBOARD'))
+		dispatch(changeScreen(Screens.DASHBOARD))
 		})
 	}
 
