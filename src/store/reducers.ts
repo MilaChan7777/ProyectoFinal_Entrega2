@@ -9,6 +9,10 @@ export const reducer = (currentAction: any, currentState: any) =>{
         case 'GETPOST':
             currentState.post = payload;
             break;
+
+        case 'SETUSER':
+            currentState.user = payload;
+            break;
         
     }
     return currentState;
