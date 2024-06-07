@@ -12,6 +12,19 @@ import '../../components/inputPost/inputPost';
 import '../../components/postButton/postButton';
 import { Screens } from '../../types/navigation';
 
+import { addPost } from '../../utils/firebase';
+import { uploadFile } from '../../utils/firebase';
+import { getFile } from '../../utils/firebase';
+
+const formData = {
+	image: '',
+	description: '',
+	tag: ''
+}
+const nombre = {
+	nombre: ''
+}
+
 class Postinput extends HTMLElement {
 
 	constructor() {
@@ -22,15 +35,35 @@ class Postinput extends HTMLElement {
 
 
 	connectedCallback() {
+		console.log(formData.image)
 		this.render();
+		const addTags = this.shadowRoot?.querySelector('#Hashtags')
+		const modal = this.shadowRoot?.querySelector('#popUpTag') as HTMLDialogElement;
+		const close = this.shadowRoot?.querySelector('#closeButton')
+		addTags?.addEventListener("click", () =>{
+		modal.showModal()
+		})
+		close?.addEventListener("click", ()=>{
+		modal.close()
+		})
+
+		const added = this.shadowRoot?.querySelector('#addButton')
+		added?.addEventListener("click", ()=>{
+		modal.close()
+		})
+
 		const Homebutton = this.shadowRoot?.querySelector('#homebutton');
 		Homebutton?.addEventListener('click', ()=>{
 		dispatch(changeScreen(Screens.DASHBOARD))
 		})
+
+		
 	}
 
-	render() {
-		if(this.shadowRoot){
+	async render() {
+ 
+		const title = await getFile(nombre.nombre)
+		console.log(title)
 
 		const container = document.createElement('container')
 		container.classList.add('container')
@@ -57,7 +90,7 @@ class Postinput extends HTMLElement {
 		Menu.appendChild(Home);
 		Menu.appendChild(Post);
 		Menu.appendChild(Profile);
-		this.shadowRoot.appendChild(Menu);
+		this.shadowRoot?.appendChild(Menu);
 
 		const profileHead = document.createElement('app-profilehead');
 		profileHead.setAttribute(Attributeposthead.profilepic, 'https://i.pinimg.com/236x/ab/32/31/ab32318e982048561a4b1f0508b265bb.jpg')
@@ -65,21 +98,118 @@ class Postinput extends HTMLElement {
 		profileHead.setAttribute(Attributeposthead.followers, '41')
 		section.appendChild(profileHead)
 
-		const input = document.createElement('input-post')
-		section.appendChild(input)
+		const inputPost = document.createElement('div')
+		inputPost.id = 'input-post'
+		section.appendChild(inputPost)
 
-		const button = document.createElement('button-post')
-		section.appendChild(button)
+		const fileLabel = document.createElement('label')
+		fileLabel.setAttribute('for', 'file-input')
+		inputPost.appendChild(fileLabel)
+		const inputfile = document.createElement('input');
+		inputfile.type = 'file'
+		inputfile.id = 'file-input'
+		inputfile.style.display = 'none'
+		inputfile.addEventListener('change', () => {
+		const file = inputfile.files?.[0]
+		if (file) uploadFile(file, 'img')
+		})
+		inputfile.addEventListener('change', this.addNombre)
+		inputPost.appendChild(inputfile)
+		
+		const inputDesc = document.createElement('input');
+		inputDesc.type = 'text'
+		inputDesc.id = 'description'
+		inputDesc.placeholder = 'Añade una descripción'
+		inputDesc.addEventListener('change', this.addDescription)
+		inputPost.appendChild(inputDesc)
+
+		const divBottom = document.createElement('div')
+		divBottom.id = 'button-post'
+		section.appendChild(divBottom)
+
+		const hashtags = document.createElement('button')
+		hashtags.id = 'Hashtags'
+		hashtags.type = 'submit'
+		hashtags.innerText = 'Añadir Hashtags'
+		divBottom.appendChild(hashtags)
+
+		const hr = document.createElement('hr')
+		divBottom.appendChild(hr)
+
+		const post =document.createElement('button')
+		post.id = 'Post'
+		post.type = 'submit'
+		post.innerText = 'Publicar'
+		divBottom.appendChild(post)
+
+		const dialogElement = document.createElement("dialog");
+		dialogElement.id = "popUpTag";
+		
+		const head = document.createElement('div')
+		head.id = 'Head'
+		dialogElement.appendChild(head)
+
+		const p = document.createElement('p')
+		p.innerText = 'Añade un Hashtag'
+		head.appendChild(p)
+
+		const cerrar = document.createElement('button')
+		cerrar.id = 'closeButton'
+		cerrar.innerText = 'X'
+		head.appendChild(cerrar)
+
+		const body = document.createElement('div')
+		body.id = 'Body'
+		dialogElement.appendChild(body)
+
+		const input = document.createElement('input')
+		input.id = 'Tag'
+		input.type = 'text'
+		input.placeholder = 'Ilustracion, Postproduction..'
+		input.addEventListener('change', this.addTag)
+		body.appendChild(input)
+
+		const add = document.createElement('button')
+		add.id = 'addButton'
+		add.type = 'submit'
+		add.innerText = 'Añadir'
+		body.appendChild(add)
+
+		section.appendChild(dialogElement)
 
 		container.appendChild(section)
-		this.shadowRoot.appendChild(container)
-		}
+		this.shadowRoot?.appendChild(container)
 
 		const cssUserpost = this.ownerDocument.createElement('style');
 		cssUserpost.innerHTML = styles;
 		this.shadowRoot?.appendChild(cssUserpost);
+		}
+
+		addImage(e: any){
+			formData.image = e.target.value
+			console.log(formData.image);
+			} 
+		
+		addDescription(e: any){
+			formData.description = e.target.value
+			console.log(formData.description)
+			console.log(formData.image);	
+			}
+	
+		addTag(e: any){
+			formData.tag = e.target.value
+			console.log(formData.tag)
+			}
+
+		addNombre(e: any){
+			nombre.nombre = e.target.value
+		}
+	
+		submitForm(){
+			addPost(formData)
+				}
 	}
-}
+
 
 export default Postinput;
 customElements.define('app-post', Postinput);
