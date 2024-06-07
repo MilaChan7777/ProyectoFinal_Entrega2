@@ -4,6 +4,7 @@ import { getFirestore, setDoc } from "firebase/firestore";
 import { collection, doc, addDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth"
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDblKMSaGR3l3VUP8Gcylpskcio8hM7cdQ",
@@ -19,11 +20,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 export const auth = getAuth(app)
+const storage = getStorage()
 
 
-export const addProduct = async (e: any) => {
+export const addPost = async (e: any) => {
     try {
-      const where = collection(db, "products");
+      const where = collection(db, "post");
       await addDoc(where, e);
       console.log("se añadió con éxito");
     } catch (error) {
@@ -80,3 +82,22 @@ export const logIn = (formData: any) => {
  })
 }
 
+
+export const uploadFile = async (file: File, id: string) => {
+	const storageRef = ref(storage, 'imgsPosts/' + file.name);
+	uploadBytes(storageRef, file).then((snapshot) => {
+		console.log('Uploaded a blob or file!');
+	});
+};
+
+export const getFile = async (File: string) => {
+	const storageRef = ref(storage, File);
+	const urlImg = await getDownloadURL(ref(storageRef))
+		.then((url) => {
+			return url;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+	return urlImg;
+};
