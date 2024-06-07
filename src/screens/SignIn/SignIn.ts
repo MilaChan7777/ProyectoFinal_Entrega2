@@ -22,7 +22,7 @@ class SignIn extends HTMLElement {
 		this.render();
 		const logInButton = this.shadowRoot?.querySelector('#logInButton');
 		logInButton?.addEventListener('click', () => {
-			dispatch(changeScreen(Screens.LOGIN));
+			dispatch(changeScreen(Screens.SIGNIN));
 		});
 	}
 		addEmail(e: any){

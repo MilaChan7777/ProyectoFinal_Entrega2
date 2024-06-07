@@ -12,7 +12,7 @@ onAuthStateChanged(auth, (user) => {
 		user.uid !== null ? dispatch(setUserCredentials(user.uid)) : '';
 		dispatch(changeScreen(Screens.DASHBOARD));
 	} else {
-		dispatch(changeScreen(Screens.LOGIN));
+		dispatch(changeScreen(Screens.SIGNIN));
 	}
 });
 
