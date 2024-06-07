@@ -5,17 +5,18 @@ import { collection, doc, addDoc } from "firebase/firestore";
 import { getDocs } from "firebase/firestore";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { uploadBytesResumable } from "firebase/storage"
+import { formData } from "../screens/Post/Post";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDblKMSaGR3l3VUP8Gcylpskcio8hM7cdQ",
-    authDomain: "vanguard-35d26.firebaseapp.com",
-    projectId: "vanguard-35d26",
-    storageBucket: "vanguard-35d26.appspot.com",
-    messagingSenderId: "187651490470",
-    appId: "1:187651490470:web:f995465153247e0d556a67",
-    measurementId: "G-Q75K0PGBWK"
-};
-
+    apiKey: "AIzaSyCJ3zQIujLQ1qj-nF0ADd8xP8oV4O2s4bA",
+    authDomain: "posts-d5116.firebaseapp.com",
+    projectId: "posts-d5116",
+    storageBucket: "posts-d5116.appspot.com",
+    messagingSenderId: "381209847571",
+    appId: "1:381209847571:web:a2e7c0e5ebf331afa65ce6",
+    measurementId: "G-TYKJ3QSXKJ"
+}
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -34,7 +35,7 @@ export const addPost = async (e: any) => {
   };
 
 export const getPosts = async () => {
-    const querySnapshot = await getDocs(collection(db, 'vanguardUsersPosts'));
+    const querySnapshot = await getDocs(collection(db, 'post'));
     const arrayPosts: Array<any>= [];
 
     querySnapshot.forEach((doc) => {
@@ -82,22 +83,37 @@ export const logIn = (formData: any) => {
  })
 }
 
-
-export const uploadFile = async (file: File, id: string) => {
-	const storageRef = ref(storage, 'imgsPosts/' + file.name);
-	uploadBytes(storageRef, file).then((snapshot) => {
-		console.log('Uploaded a blob or file!');
-	});
+export const uploadFile = (file: any, folder: any) => {
+    const storageRef = ref(storage, `${folder}/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+    uploadTask.on('state_changed',
+        (snapshot: any) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Progreso de carga:', progress);
+        },
+        (error: any) => {
+            console.error('Error al cargar el archivo:', error);
+        },
+        () => {
+            getDownloadURL(storageRef)
+                .then((url) => {
+                    console.log('URL del archivo:', url);
+                    formData.image = url
+                })
+                .catch((error) => {
+                    console.error('Error al obtener la URL del archivo:', error);
+                });
+        }
+    );
 };
 
-export const getFile = async (File: string) => {
-	const storageRef = ref(storage, File);
-	const urlImg = await getDownloadURL(ref(storageRef))
-		.then((url) => {
-			return url;
-		})
-		.catch((error) => {
-			console.error(error);
-		});
-	return urlImg;
+export const getFile = async (fileName: any) => {
+    const storageRef = ref(storage, fileName);
+    try {
+        const url = await getDownloadURL(storageRef);
+        return url;
+    } catch (error) {
+        console.error('Error al obtener la URL:', error);
+        throw error;
+    }
 };
