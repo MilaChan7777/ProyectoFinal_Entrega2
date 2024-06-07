@@ -16,11 +16,12 @@ import { addPost } from '../../utils/firebase';
 import { uploadFile } from '../../utils/firebase';
 import { getFile } from '../../utils/firebase';
 
-const formData = {
+export const formData = {
 	image: '',
 	description: '',
 	tag: ''
 }
+
 const nombre = {
 	nombre: ''
 }
@@ -34,7 +35,7 @@ class Postinput extends HTMLElement {
 	}
 
 
-	connectedCallback() {
+	async connectedCallback() {
 		console.log(formData.image)
 		this.render();
 		const addTags = this.shadowRoot?.querySelector('#Hashtags')
@@ -56,14 +57,9 @@ class Postinput extends HTMLElement {
 		Homebutton?.addEventListener('click', ()=>{
 		dispatch(changeScreen(Screens.DASHBOARD))
 		})
-
-		
-	}
+	}	
 
 	async render() {
- 
-		const title = await getFile(nombre.nombre)
-		console.log(title)
 
 		const container = document.createElement('container')
 		container.classList.add('container')
@@ -109,11 +105,18 @@ class Postinput extends HTMLElement {
 		inputfile.type = 'file'
 		inputfile.id = 'file-input'
 		inputfile.style.display = 'none'
-		inputfile.addEventListener('change', () => {
-		const file = inputfile.files?.[0]
-		if (file) uploadFile(file, 'img')
-		})
-		inputfile.addEventListener('change', this.addNombre)
+		inputfile.addEventListener('change', async () => {
+			const file = inputfile.files?.[0];
+			if (file) {
+				await uploadFile(file, 'img');
+				const fileName = file.name;
+				if (fileName !== undefined) {
+					this.addNombre(fileName);
+				}
+			}
+		});
+		
+		
 		inputPost.appendChild(inputfile)
 		
 		const inputDesc = document.createElement('input');
@@ -173,6 +176,7 @@ class Postinput extends HTMLElement {
 		add.id = 'addButton'
 		add.type = 'submit'
 		add.innerText = 'Añadir'
+		add.addEventListener('click', this.submitForm)
 		body.appendChild(add)
 
 		section.appendChild(dialogElement)
@@ -184,6 +188,7 @@ class Postinput extends HTMLElement {
 		cssUserpost.innerHTML = styles;
 		this.shadowRoot?.appendChild(cssUserpost);
 		}
+
 
 		addImage(e: any){
 			formData.image = e.target.value
@@ -201,15 +206,18 @@ class Postinput extends HTMLElement {
 			console.log(formData.tag)
 			}
 
-		addNombre(e: any){
-			nombre.nombre = e.target.value
+		addNombre(fileName: string){
+			nombre.nombre = fileName
+			console.log(nombre.nombre);
+			
 		}
 	
 		submitForm(){
 			addPost(formData)
-				}
+			console.log(FormData)
+			alert('Se publicó con éxito')
+		}
 	}
-
 
 export default Postinput;
 customElements.define('app-post', Postinput);
